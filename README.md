@@ -1,5 +1,5 @@
 # parcel-project-template
-
+https://jacekpasierb.github.io/filmonetka/
 ## Zalezności
 
 Na komputerze musi być zainstalowana LTS-wersja [Node.js](https://nodejs.org/en/).
