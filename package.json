@@ -5,7 +5,7 @@
   "homepage": "https://github.com/JacekPasierb/filmonetka",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url filmonetka"
+    "build": "parcel build src/*.html --public-url /filmonetka/"
   },
   "repository": {
     "type": "git",
