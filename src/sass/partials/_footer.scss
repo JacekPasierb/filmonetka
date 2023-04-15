@@ -3,7 +3,10 @@
   padding-block: 30px;
 }
 .RightReservedBox {
-   text-align: center;
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
 }
 .RightReservedText {
  
@@ -14,4 +17,8 @@
   text-align: center;
 
   color: var(--footer_text);
+}
+.IconFavourite {
+  width: 14px;
+  height: 13px;
 }
