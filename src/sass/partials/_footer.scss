@@ -1,0 +1,24 @@
+.Footer {
+  background-color: var(--footer_background);
+  padding-block: 30px;
+}
+.RightReservedBox {
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+}
+.RightReservedText {
+ 
+  
+  font-weight: 400;
+  line-height: 19px;
+  align-items: center;
+  text-align: center;
+
+  color: var(--footer_text);
+}
+.IconFavourite {
+  width: 14px;
+  height: 13px;
+}

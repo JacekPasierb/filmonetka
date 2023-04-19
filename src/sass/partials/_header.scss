@@ -5,14 +5,14 @@
     width:100%;
     height:230px;
     background-image: url("/src/images/tekstura3_sm@1x.jpg");
-@media screen and (min-width:768px){
-    height:219px;
-    background-image: url("/src/images/tekstura3_md@1x.jpg");
-}
-@media sreen and (min-width:1280px) {
-    height:216px;
-    background-image: url("/src/images/tekstura3_lg@1x.jpg");
-}
+    @media screen and (min-width:768px){
+        height:219px;
+        background-image: url("/src/images/tekstura3_md@1x.jpg");
+    }
+    @media sreen and (min-width:1280px) {
+        height:216px;
+        background-image: url("/src/images/tekstura3_lg@1x.jpg");
+    }
 }
 @media (min-device-pixel-ratio: 2),
 (min-resolution: 192dpi),
@@ -31,17 +31,17 @@
 .header-library__image-link {
     display:flex;
     align-items: center;
-text-decoration: none;
-position:relative;
-top:40px;
-left:20px;
-@media screen and (min-width:768px) {
-    top: 52px;
-    left:32px;
-}
-@media screen and (min-width:1280px){
-    top:45px;
-}
+    text-decoration: none;
+    position:relative;
+    top:40px;
+    left:20px;
+    @media screen and (min-width:768px) {
+        top: 52px;
+        left:32px;
+    }
+    @media screen and (min-width:1280px){
+        top:45px;
+    }
 }
 .header-library__image {
     width:24px;
@@ -97,7 +97,7 @@ left:20px;
 }
 
 .button{
-     width:129.53;
+    width:129.53;
     height: 44px;
     border: 1px solid;
     outline-color:  var(--header_text);
@@ -117,5 +117,9 @@ left:20px;
         width:148px;
         height:42px;
     }
+}
+.button:focus{
+    background-color: var(--button_active);
+    border-color: transparent;
 }
 
