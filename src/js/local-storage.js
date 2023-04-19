@@ -1,36 +1,50 @@
 const KEY_WATCHED = 'watched';
 const KEY_QUEUE = 'queue';
-export const watched = getWatchedLocalStorage() || [];
-export const queue = getQueueLocalStorage() || [];
+const watched = getWatchedLocalStorage() || [];
+const queue = getQueueLocalStorage() || [];
 
-export function getWatchedLocalStorage() {
-  return JSON.parse(localStorage.getItem(KEY_WATCHED));
-} // funkcja do ściągania fimów do kolejki local storage
+const getWatchedLocalStorage = () => {
+  JSON.parse(localStorage.getItem(KEY_WATCHED));
+}; // funkcja do ściągania fimów do kolejki local storage
 
-export function getQueueLocalStorage() {
-  return JSON.parse(localStorage.getItem(KEY_QUEUE));
-} // funkcja do ściągania filmów obejrzanych z local storage
+const getQueueLocalStorage = () => {
+  JSON.parse(localStorage.getItem(KEY_QUEUE));
+}; // funkcja do ściągania filmów obejrzanych z local storage
 
-export function setWatchedLocalStorage(arr) {
+const setWatchedLocalStorage = arr => {
   localStorage.setItem(KEY_WATCHED, JSON.stringify(arr));
-} // funckja do wrzucania filmów do local storage - do obejrzanych
+}; // funckja do wrzucania filmów do local storage - do obejrzanych
 
-export function setQueueLocalStorage(arr) {
+const setQueueLocalStorage = arr => {
   localStorage.setItem(KEY_QUEUE, JSON.stringify(arr));
-} // funckja do wrzucania filmów do local storage - do kolejki
+}; // funckja do wrzucania filmów do local storage - do kolejki
 
-export function onAddToWatched(id) {
+const onAddToWatched = id => {
   if (watched.includes(id)) {
     return;
   }
   watched.pusch(id);
   setWatchedLocalStorage(watched);
-}
+};
 
-export function onAddToQueue(id) {
+const onAddToQueue = id => {
   if (queue.includes(id)) {
     return;
   }
   queue.push(id);
   setQueueLocalStorage(queue);
-}
+};
+const localStorage = {
+  KEY_WATCHED,
+  KEY_QUEUE,
+  watched,
+  queue,
+  getWatchedLocalStorage,
+  getQueueLocalStorage,
+  setWatchedLocalStorage,
+  setQueueLocalStorage,
+  onAddToWatched,
+  onAddToQueue,
+};
+
+export default localStorage;
