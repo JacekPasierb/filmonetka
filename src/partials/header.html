@@ -1,0 +1,40 @@
+<header class="Header">
+  <div class="HeaderContainer">
+    <div class="HeaderNav">
+      <a href="index.html">
+        <svg class="HeaderSvgFilm">
+          <use href="/src/images/symbol-defs.svg#icon-film"></use>
+        </svg>
+      </a>
+      <h1 class="HeaderTitle"><a class="HeaderLinks" href="index.html"> Filmoteka</a></h1>
+      <ul class="HeaderUl">
+        <li class="HeaderLi"><a class="HeaderLinks HeaderLinkHome" href="index.html">HOME</a></li>
+        <li class="HeaderLi"><a class="HeaderLinks" href="">MY LIBRARY</a></li>
+      </ul>
+    </div>
+    <form class="HeaderInput">
+      <input
+        class="HeaderInputText"
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Movie search"
+      />
+      <button class="HeaderInputBtn">
+        <svg class="HeaderSvgSearch">
+          <use href="/src/images/symbol-defs.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+    <p class="HeaderInputNotify IsHidden">
+      Search result not successful. Enter the correct movie name
+    </p>
+  </div>
+
+  <script src="keyword.js" type="module"></script>
+</header>
+<div class="GalleryBcg">
+  <div class="container">
+    <ul class="Gallery GalleryCointainer" id="gallery-main"></ul>
+  </div>
+</div>
