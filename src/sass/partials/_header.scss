@@ -205,11 +205,8 @@
 
 .MoviePoster {
   overflow: hidden;
-
-  @media (max-width: 767.98px) {
-    width: 280px;
-    height: 398px;
-  }
+  width: 280px;
+  height: 398px;
 
   @media screen and (min-width: 768px) {
     width: 336px;
@@ -287,11 +284,11 @@
 
   @media screen and (min-width: 768px) {
     padding-top: 59px;
+    padding-bottom: 60px;
   }
 
   @media screen and (min-width: 1280px) {
     padding-top: 60px;
-    padding-bottom: 60px;
   }
 }
 
