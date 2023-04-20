@@ -23,7 +23,13 @@
 <body>
     <div class="watched-movies">
     </div>
-    <script src = "./my-library.js" type="module"></script>
+   
+     <!-- W taki sposbu dodajemy fragmenty w główny HTML-plik strony. -->
+     <include src="./partials/footer.html"></include>
+
+
+    <!-- Skrypt jest na samym dole kodu. On juz ma w sobie podłączony SAAS plik. -->
+    <script src="./my-library.js" type="module"></script>
 </body>
 </html>
 
