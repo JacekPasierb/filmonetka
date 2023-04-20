@@ -4,21 +4,30 @@
 }
 .RightReservedBox {
   display: flex;
-   justify-content: center;
-   align-items: center;
-   gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 .RightReservedText {
- 
-  
   font-weight: 400;
-  line-height: 19px;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
   align-items: center;
   text-align: center;
-
   color: var(--footer_text);
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
 }
+
 .IconFavourite {
   width: 14px;
   height: 13px;
+  margin-inline: 10px;
 }
