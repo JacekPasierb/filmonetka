@@ -1,8 +1,8 @@
 import Trending from './trendingMovie.js';
-import { movieGenres } from './genres.js';
+import Genres from './genres.js';
 
 const moviesGallery = document.querySelector('.movie-section__card');
-
+// -----Tworzenie galerii popularnych filmów
 Trending.getTrendingMovies()
   .then(data => {
     renderMovieCard(data.results);
@@ -21,7 +21,7 @@ export function renderMovieCard(movies) {
       // Wyszukiwanie gatunku filmowego po id:
       let matchedGenres = genre_ids
         .map(id => {
-          const genre = movieGenres.find(g => g.id === id);
+          const genre = Genres.movieGenres.find(genre => genre.id === id);
           return genre ? [`${genre.name}`] : '';
         })
         .filter(Boolean);

@@ -1,4 +1,6 @@
-export const movieGenres = [
+//----Lista kategori zrobiona na sztywno aby sprawdzić działanie, ale trzeba będzie podpiąć skrypt pobierający to z API
+
+const movieGenres = [
   {
     id: 28,
     name: 'Action',
@@ -76,3 +78,6 @@ export const movieGenres = [
     name: 'Western',
   },
 ];
+
+const Genres = { movieGenres };
+export default Genres;
