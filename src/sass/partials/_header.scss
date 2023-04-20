@@ -1,3 +1,321 @@
+// Header
+
+.Header {
+  display: flex;
+  display: block;
+  background-image: url(/src/images/tekstura_2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 230px;
+
+  @media screen and (min-width: 768px) {
+    height: 216px;
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    background-image: url('/src/images/tekstura_2@2x.jpg');
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    background-image: url('/src/images/tekstura_2@3x.jpg');
+  }
+}
+
+.HeaderUl {
+  list-style: none;
+  display: flex;
+  display: inline-flex;
+}
+
+.HeaderLi {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.HeaderSvgFilm {
+  height: 24px;
+  width: 24px;
+  margin-right: 112px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 8px;
+  }
+}
+
+.HeaderSvgSearch {
+  height: 12px;
+  width: 12px;
+}
+
+.HeaderNav {
+  padding-bottom: 54px;
+  align-items: center;
+  display: flex;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 0px;
+  }
+}
+
+.HeaderContainer {
+  padding-top: 40px;
+  padding-bottom: 92px;
+  align-items: center;
+  margin: 0 auto;
+  width: 280px;
+  height: 146px;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 95px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1216px;
+    height: 88px;
+  }
+}
+
+.HeaderLinks {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.HeaderLinkHome {
+  padding-right: 40px;
+}
+
+.HeaderLinkHome::after {
+  position: absolute;
+  display: block;
+  content: '';
+  position: absolute;
+  width: 34px;
+  height: 3px;
+  background: #ff001b;
+}
+
+.HeaderInput {
+  text-align: center;
+}
+
+.HeaderInput::after {
+  position: absolute;
+  display: block;
+  content: '';
+  position: absolute;
+  width: 280px;
+  height: 1px;
+  background: #ffffff;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 212px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-left: 468px;
+  }
+}
+
+.HeaderInputText {
+  border: none;
+  background-color: #0000;
+  width: 264px;
+  height: 20px;
+  outline: none;
+  transition: color #ffffff;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.HeaderInputBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.HeaderTitle {
+  @media screen and (min-width: 320px) {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-right: 387px;
+    margin-top: -1px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-right: 898px;
+  }
+}
+
+.IsHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.HeaderInputNotify {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.1;
+  text-align: center;
+  color: #ff001b;
+  padding-top: 16px;
+}
+
+// Search by keyword - movie card
+
+.MovieCard {
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    width: calc((100% - 32px) / 2);
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: calc((100% - 2 * 16px) / 3);
+  }
+}
+
+.MoviePoster {
+  overflow: hidden;
+  width: 280px;
+  height: 398px;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    height: 466px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 395px;
+    height: 574px;
+  }
+}
+
+.MoviePosterImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.MovieData {
+  padding: 10px 0 0 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 8px 0 0 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 12px 0 0 0;
+  }
+}
+
+.MovieTitle {
+  text-transform: uppercase;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.1;
+  color: #000000;
+
+  @media screen and (min-width: 768px) {
+    line-height: 1.3;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.MovieInfo {
+  color: #ff6b08;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.1;
+  color: #ff6b08;
+
+  @media screen and (min-width: 768px) {
+    line-height: 1.3;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+// Gallery
+
+.Gallery {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 59px;
+    padding-bottom: 60px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-top: 60px;
+  }
+}
+
+.GalleryBcg {
+  background-color: #e5e5e5;
+}
+
+.GalleryCointainer {
+  @extend .container;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+    column-gap: 16px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    column-gap: 16px;
+    row-gap: 32px;
+  }
+}
+=======
 .container-background {
     background-repeat: no-repeat;
     background-position: center;
