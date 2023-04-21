@@ -1,0 +1,21 @@
+const modal = document.querySelector('.modal__box');
+
+const modalClose = () => {
+  modal.style.display = 'none';
+};
+
+const closeByKey = document.addEventListener('keydown', e => {
+  if (event.key === 'Escape') {
+    modalClose();
+  }
+});
+
+const closeByClick = window.addEventListener('click', e => {
+  if (event.target == modal) {
+    modalClose();
+  }
+});
+
+const closeModal = { modal, modalClose, closeByKey, closeByClick };
+
+export default closeModal;
