@@ -3,13 +3,14 @@ import axios from 'axios';
 const API_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '8c57aa16de6d4d7f2d4ddf4e537ebfb8';
 
+const qs = selector => document.querySelector(selector);
 const REFS = {
-  FORM: document.querySelector('.HeaderInput'),
-  FORM_NOTIFY: document.querySelector('.HeaderInputNotify'),
-  GALLERY: document.querySelector('.Gallery'),
+  FORM: qs('.HeaderInput'),
+  FORM_NOTIFY: qs('.HeaderInputNotify'),
+  GALLERY: qs('.Gallery'),
 };
 
-async function getByKeyword(query, page) {
+const getByKeyword = async (query, page) => {
   const url = `${API_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`;
   return await axios
     .get(url)
@@ -17,9 +18,9 @@ async function getByKeyword(query, page) {
       return response.data;
     })
     .catch(error => console.log(error));
-}
+};
 
-function createGalleryMarkup(movies) {
+const createGalleryMarkup = movies => {
   return movies
     .map(movie => {
       const genres = genresGalleryInfo(movie.genre_ids);
@@ -46,9 +47,9 @@ function createGalleryMarkup(movies) {
       </li>`;
     })
     .join('');
-}
+};
 
-function genresGalleryInfo(array) {
+const genresGalleryInfo = array => {
   const genreResult = genresId.reduce((acc, element) => {
     if (Array.isArray(array) && array.includes(element.id)) {
       acc.push(element.name);
@@ -63,7 +64,7 @@ function genresGalleryInfo(array) {
   } else {
     return genreResult.join(', ');
   }
-}
+};
 
 const genresId = [
   {
