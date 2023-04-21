@@ -301,18 +301,21 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  row-gap: 20px;
+  padding-right: 0px;
+  padding-left: 0px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 32px;
-    column-gap: 16px;
+    row-gap: 32px;
+    column-gap: 32px;
+    padding-right: 12px;
+    padding-left: 12px;
   }
 
   @media screen and (min-width: 1280px) {
     column-gap: 16px;
-    row-gap: 32px;
   }
 }
 
