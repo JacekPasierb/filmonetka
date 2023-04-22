@@ -1,4 +1,3 @@
 import './sass/main.scss';
-import './keyword.js';
+import './js/keyword';
 import { renderMovieCard } from './js/renderMovieCards';
-
