@@ -16,6 +16,8 @@
 .RightReservedItem {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
 }
 .RightReservedText {
   font-weight: 400;
