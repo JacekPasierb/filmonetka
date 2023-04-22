@@ -8,4 +8,3 @@ import '../src/js/loader';
 
 // Gdyby inne sposoby zawiodły :D 
 import './js/PaginationRatunek';
-
