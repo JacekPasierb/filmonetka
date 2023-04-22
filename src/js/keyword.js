@@ -174,3 +174,7 @@ function SearchByKeywordWrongName(e) {
     REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
   });
 }
+
+document.getElementById('SearchBtn').onclick = function () {
+  document.getElementById('HideGalleryOnKeyword').style.display = 'none';
+};
