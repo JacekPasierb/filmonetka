@@ -1,6 +1,6 @@
 
 import './sass/main.scss';
-import './keyword.js';
+import './js/keyword';
 // import './js/renderMovieCards';
 // import './js/trendingMovie';
 // import { renderMovieCard } from './js/renderMovieCards';
