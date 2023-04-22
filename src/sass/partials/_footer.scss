@@ -3,6 +3,7 @@
   padding-block: 30px;
 }
 .RightReservedBox {
+  list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,6 +12,12 @@
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }
+}
+.RightReservedItem {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 }
 .RightReservedText {
   font-weight: 400;
@@ -23,6 +30,10 @@
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 19px;
+  }
+  &--highlight {
+    text-decoration: underline;
+    margin-left: 10px;
   }
 }
 
