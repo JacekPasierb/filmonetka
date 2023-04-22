@@ -33,7 +33,7 @@ export function renderMovieCard(movies) {
         matchedGenres = matchedGenres.join(', ');
       }
 
-      return `<li class="movie-container__card">
+      return `<li class="movie-container__card" data-modal-open>
             <div class="poster"><img class="poster__img" src="${moviePoster}" alt="${title} poster" loading="lazy" /></div>
             <div class="movieInfo">
                <p class="movieInfo__item movieInfo--title">${movieName}</p>
