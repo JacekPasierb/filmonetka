@@ -1,17 +1,15 @@
-import { API_KEY, BASE_URL } from "./API_variables.js";
+import { API_KEY, BASE_URL } from './API_variables.js';
 
 const getTrendingMovies = async (page = 1) => {
-	try {
-		const resp = await fetch(
-			`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`,
-		);
+  try {
+    const resp = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
 
-		if (!resp.ok) throw new Error(resp.status);
+    if (!resp.ok) throw new Error(resp.status);
 
-		return await resp.json();
-	} catch (err) {
-		console.error(err);
-	}
+    return await resp.json();
+  } catch (err) {
+    console.error(err);
+  }
 };
 const Trending = { getTrendingMovies };
 

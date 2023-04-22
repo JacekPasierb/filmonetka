@@ -1,10 +1,14 @@
 import Trending from './trendingMovie.js';
 import Genres from './genres.js';
+import { showHideLoader } from './loader';
+import refs from './refs';
 
 const moviesGallery = document.querySelector('.movie-section__card');
 // -----Tworzenie galerii popularnych filmów
+showHideLoader(refs.loader);
 Trending.getTrendingMovies()
   .then(data => {
+    showHideLoader(refs.loader);
     renderMovieCard(data.results);
   })
   .catch(error => {
