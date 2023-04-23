@@ -2,13 +2,8 @@ const modal = document.querySelector("[data-modal]");
 const openModalBtn = document.querySelectorAll("[data-modal-open]");
 const closeModalBtn = document.querySelector("[data-modal-close]");
 
-console.log(openModalBtn);
-openModalBtn.forEach((btn) => {
-	btn.addEventListener("click", (e) => {
-		e.preventDefault;
-		toggleModal();
-	});
-});
+console.log('1',openModalBtn);
+openModalBtn.forEach((btn) =>console.log('2',btn));
 // openModalBtn.addEventListener('click',e=>{
 //   e.preventDefault;
 // 		toggleModal();
