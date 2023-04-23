@@ -1,0 +1,2 @@
+const modal=document.querySelector("[data-modal]"),openModalBtn=document.querySelector("[data-modal-open]"),closeModalBtn=document.querySelector("[data-modal-close]");function toggleModal(){modal.classList.toggle("is-hidden")}console.log(openModalBtn),openModalBtn.addEventListener("click",(o=>{o.preventDefault,toggleModal()})),console.log(closeModalBtn),closeModalBtn.addEventListener("click",(o=>{o.preventDefault,toggleModal()}));
+//# sourceMappingURL=index.275c704f.js.map
