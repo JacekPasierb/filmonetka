@@ -32,7 +32,7 @@ const createGalleryMarkup = (movies) => {
 				: movie.title;
 
 			return `
-      <li class="MovieCard" data-movie="${movie.id} data-modal-open">
+      <li class="MovieCard" data-movie="${movie.id}">
         <div class="MoviePoster">
             <img class="MoviePosterImg"
             src="${poster}"
