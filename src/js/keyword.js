@@ -1,13 +1,13 @@
-import axios from 'axios';
-import tools from './tools';
+import axios from "axios";
+import tools from "./tools";
 
-const API_URL = 'https://api.themoviedb.org/3';
-const API_KEY = '8c57aa16de6d4d7f2d4ddf4e537ebfb8';
+const API_URL = "https://api.themoviedb.org/3";
+const API_KEY = "8c57aa16de6d4d7f2d4ddf4e537ebfb8";
 
 const REFS = {
-  FORM: tools.qs('.HeaderInput'),
-  FORM_NOTIFY: tools.qs('.HeaderInputNotify'),
-  GALLERY: tools.qs('.Gallery'),
+	FORM: tools.qs(".HeaderInput"),
+	FORM_NOTIFY: tools.qs(".HeaderInputNotify"),
+	GALLERY: tools.qs(".Gallery"),
 };
 
 const getByKeyword = async (query, page) => {
@@ -177,6 +177,7 @@ function SearchByKeywordWrongName(e) {
 	});
 }
 
-document.getElementById('SearchBtn').onclick = function () {
-  document.getElementById('HideGalleryOnKeyword').style.display = 'none';
+document.getElementById("SearchBtn").onclick = function () {
+	document.getElementById("HideGalleryOnKeyword").style.display = "none";
 };
+
