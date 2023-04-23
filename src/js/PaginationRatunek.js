@@ -96,7 +96,7 @@ next.addEventListener('click', () => {
   }
 })
 
-console.log(lastUrl)
+// console.log(lastUrl)
 
 function pageCall(page){
   let urlSplit = lastUrl.split('?');
