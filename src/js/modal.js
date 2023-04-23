@@ -10,6 +10,10 @@ console.log(openModalBtn);
 // 		toggleModal();
 // 	});
 // });
+openModalBtn.addEventListener("click", (e) => {
+	e.preventDefault;
+	toggleModal();
+});
 console.log(closeModalBtn);
 closeModalBtn.addEventListener("click", (e) => {
 	e.preventDefault;
