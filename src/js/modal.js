@@ -5,7 +5,7 @@ const GALLERYtrend = tools.qs(".movie-section__card");
 const modal = document.querySelector("[data-modal]");
 const closeModalBtn = document.querySelector("[data-modal-close]");
 
-toggleModal();
+
 function toggleModal() {
 	modal.classList.toggle("is-hidden");
 }
