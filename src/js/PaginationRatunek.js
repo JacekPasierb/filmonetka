@@ -53,7 +53,7 @@ function renderMovies(data) {
   data.forEach(markup => {
     const { title, name, release_date, first_air_date, poster_path, genre_ids } = markup;
     const moviePoster = `https://image.tmdb.org/t/p/w500/${poster_path}`;
-    const movieDate = release_date.slice(0, 4) : first_air_date.slice(0, 4)
+    const movieDate = release_date ? release_date.slice(0, 4) : first_air_date;
     const movieName = title ? title : name;
     let matchedGenres = genre_ids
     .map(id => {

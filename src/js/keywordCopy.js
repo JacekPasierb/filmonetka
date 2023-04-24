@@ -28,7 +28,6 @@ const createGalleryMarkup = (movies) => {
 			const genres = genresGalleryInfo(movie.genre_ids);
 			const movieDate = movie.release_date ?? movie.first_air_date ?? null;
 			const movieYear = movieDate ? movieDate.slice(0, 4) : "Unknown year";
-
 			const poster = movie.poster_path
 				? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
 				: movie.title;
@@ -48,9 +47,7 @@ const createGalleryMarkup = (movies) => {
         </div>
       </li>`;
 		})
-		.join("");
-
-		
+		.join("");		
 };
 
 const genresGalleryInfo = (array) => {
@@ -105,38 +102,9 @@ prevSearch.addEventListener('click', () => {
   prevSearch.classList.remove('disabled');
    nextSearch.classList.remove('disabled')
 }
+REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
 })
 }
-	// let createGalleryMarkup(movies)
-	// 	return movies
-	// 		.map((movie) => {
-	// 			const genres = genresGalleryInfo(movie.genre_ids);
-	// 			const movieDate = movie.release_date ?? movie.first_air_date ?? null;
-	// 			const movieYear = movieDate ? movieDate.slice(0, 4) : "Unknown year";
-	
-	
-	// 			const poster = movie.poster_path
-	// 				? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-	// 				: movie.title;
-	
-	// 			return `
-	//       <li class="MovieCard" data-movie="${movie.id}">
-	//         <div class="MoviePoster">
-	//             <img class="MoviePosterImg"
-	//             src="${poster}"
-	//             alt=${movie.title ?? movie.name}
-	//             loading="lazy"
-	//             />
-	//         </div>
-	//         <div class="MovieData">
-	//           <p class="MovieTitle">${movie.title ?? movie.name}</p>
-	//           <p class="MovieInfo">${genres} | ${movieYear}</p>
-	//         </div>
-	//       </li>`;
-	// 		})
-	// 		.join("");
-	// };
-
 
 const genresId = [
 	{
@@ -250,6 +218,5 @@ function SearchByKeywordWrongName(e) {
 }
 
 document.getElementById('SearchBtn').onclick = function () {
-  document.getElementById('HideGalleryOnKeyword').style.display = 'none';
+document.getElementById('HideGalleryOnKeyword').style.display = 'none';
 };
-
