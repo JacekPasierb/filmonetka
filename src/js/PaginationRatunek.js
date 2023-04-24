@@ -74,8 +74,10 @@ function renderMovies(data) {
     }
     const markupEl = document.createElement('li');
     markupEl.classList.add('movie-container__card');
+
     markupEl.setAttribute('data-id', `${markup.id}`);
     markupEl.innerHTML = `
+
     <div class="poster"><img class="poster__img" src="${moviePoster}" alt="${title} poster" loading="lazy" /></div>
     <div class="movieInfo">
        <p class="movieInfo__item movieInfo--title">${movieName}</p>
@@ -100,9 +102,9 @@ next.addEventListener('click', () => {
   }
 });
 
-console.log(lastUrl);
 
-function pageCall(page) {
+function pageCall(page){
+
   let urlSplit = lastUrl.split('?');
   console.log(urlSplit);
   let queryParams = urlSplit[1].split('&');
@@ -121,3 +123,4 @@ function pageCall(page) {
     getTrendMovies(url);
   }
 }
+
