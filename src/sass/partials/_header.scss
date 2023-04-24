@@ -354,7 +354,7 @@
 }
 
 .GalleryBcg {
-  background-color: #e5e5e5;
+  background-color: white;
 }
 
 .GalleryCointainer {
@@ -534,4 +534,8 @@
 .button:focus {
   background-color: var(--button_active);
   border-color: transparent;
+}
+
+#searchPagination {
+  display:none
 }

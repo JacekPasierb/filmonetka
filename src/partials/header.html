@@ -37,4 +37,23 @@
   <div class="container">
     <ul class="Gallery GalleryCointainer" id="gallery-main"></ul>
   </div>
+  <div class="pagination disabledSearch" id="searchPagination">
+    <div class="pagination__page-ico" id="prevSearch">
+      <svg width="16" height="16">
+        <use href="/src/images/symbol-defs.svg#icon-arrow-left"></use>
+      </svg>
+    </div>
+    <div class="pagination__outdated" id="prvprv">1</div>
+    <!-- podstronyw  klasie "pagination__outdated" są poniżej na sztywno wrzucone, aby mógł css wykonać -->
+    <div class="pagination__outdated" id="prv">1</div>
+    <div class="current pagination__current" id="currentSearch">1</div>
+    <div class="pagination__outdated" id="nxt">2</div>
+    <div class="pagination__outdated" id="nxtnxt">3</div>
+    <div class="pagination__page-ico" id="nextSearch">
+      <svg width="16" height="16">
+        <!-- wie jak ktoś te strzałki wizaulnie rozpracować? w trybie "normal" mają jakieś niepotrzebne wypełnienie koło naroznika, w "hover" są same krawędzie ale przy narożnku brak linii-->
+        <use href="/src/images/symbol-defs.svg#icon-arrow-right"></use>
+      </svg>
+    </div>
+  </div>
 </div>

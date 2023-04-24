@@ -145,7 +145,50 @@ const genresId = [
   },
 ];
 
-REFS.FORM.addEventListener('submit', SearchByKeywordWrongName);
+
+	let currentSearchPage = 1
+    let nextSearchPage = currentSearchPage + 1;
+    let prevSearchPage = currentSearchPage - 1;
+    let totalSearchPages = 100
+    
+prevSearch.addEventListener('click', () => {
+    if(prevSearchPage > 0){
+      pageCallSearch(prevSearchPage);
+    }
+  })
+  
+  nextSearch.addEventListener('click', () => {
+    if(nextSearchPage <= totalSearchPages){
+      pageCallSearch(nextSearchPage);
+    }
+  })
+
+  function pageCallSearch(page){
+        getByKeyword(query, page).then((data) => {
+        if(data.total_pages !== 0) {
+            currentSearchPage = data.page;
+            nextSearchPage = currentSearchPage + 1;
+            prevSearchPage = currentSearchPage - 1;
+            totalSearchPages = data.total_pages;
+            currentSearch.innerText = currentSearchPage;
+            }
+if(currentSearchPage <= 1){
+  prevSearch.classList.add('disabled');
+  nextSearch.classList.remove('disabled')
+}else if(currentSearchPage>= totalSearchPages){
+  prevSearch.classList.remove('disabled');
+   nextSearch.classList.add('disabled')
+}else{
+  prevSearch.classList.remove('disabled');
+   nextSearch.classList.remove('disabled')
+}
+REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
+})
+}
+
+
+REFS.FORM.addEventListener("submit", SearchByKeywordWrongName);
+
 let query;
 
 function SearchByKeywordWrongName(e) {
@@ -175,6 +218,9 @@ function SearchByKeywordWrongName(e) {
   });
 }
 
-document.getElementById('SearchBtn').onclick = function () {
-  document.getElementById('HideGalleryOnKeyword').style.display = 'none';
+
+document.getElementById("SearchBtn").onclick = function () {
+	document.getElementById("HideGalleryOnKeyword").style.display = "none";
+	document.getElementById("searchPagination").style.display = "flex";
+
 };

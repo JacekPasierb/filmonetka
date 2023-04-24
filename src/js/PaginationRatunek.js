@@ -1,5 +1,7 @@
 import Genres from './genres.js';
 import { API_KEY, BASE_URL, TREND_URL } from './API_variables.js';
+import { showHideLoader } from './loader';
+import refs from './refs';
 
 // import { renderMovies } from "./renderMovieCards";
 // import { getTrendMovies } from './trendingMovie.js';
@@ -18,12 +20,16 @@ let totalPages = 100;
 const moviesGallery = document.querySelector('.movie-section__card');
 
 getTrendMovies(TREND_URL);
-
+showHideLoader(refs.loader);
 function getTrendMovies(url) {
   lastUrl = url;
   fetch(url)
     .then(res => res.json())
+
+
     .then(data => {
+      showHideLoader(refs.loader);
+
       if (data.results.length !== 0) {
         renderMovies(data.results);
         currentPage = data.page;
@@ -53,7 +59,9 @@ function renderMovies(data) {
   data.forEach(markup => {
     const { title, name, release_date, first_air_date, poster_path, genre_ids } = markup;
     const moviePoster = `https://image.tmdb.org/t/p/w500/${poster_path}`;
-    const movieDate = release_date.slice(0, 4) : first_air_date.slice(0, 4);
+
+    const movieDate = release_date ? release_date.slice(0, 4) : first_air_date;
+
     const movieName = title ? title : name;
     let matchedGenres = genre_ids
       .map(id => {
@@ -62,15 +70,22 @@ function renderMovies(data) {
       })
       .filter(Boolean);
 
-    // Wyświetlanie gatunków filmowych
+
+    // Wyświetlane są tylko dwa pierwsze gatunki filmowe
     if (matchedGenres.length > 2) {
-      matchedGenres = matchedGenres.slice(0, 3).join(', ');
+      matchedGenres = matchedGenres.slice(0, 2).join(', ') + ' (...)';
+
     } else {
       matchedGenres = matchedGenres.join(', ');
     }
     const markupEl = document.createElement('li');
     markupEl.classList.add('movie-container__card');
+
+
+    markupEl.setAttribute('data-id', `${markup.id}`);
     markupEl.innerHTML = `
+
+
     <div class="poster"><img class="poster__img" src="${moviePoster}" alt="${title} poster" loading="lazy" /></div>
     <div class="movieInfo">
        <p class="movieInfo__item movieInfo--title">${movieName}</p>
@@ -95,9 +110,11 @@ next.addEventListener('click', () => {
   }
 });
 
-console.log(lastUrl);
 
-function pageCall(page) {
+
+function pageCall(page){
+
+
   let urlSplit = lastUrl.split('?');
   console.log(urlSplit);
   let queryParams = urlSplit[1].split('&');
@@ -116,3 +133,4 @@ function pageCall(page) {
     getTrendMovies(url);
   }
 }
+
