@@ -80,7 +80,19 @@ closeModalBtn.addEventListener('click', e => {
   e.preventDefault();
   toggleModal();
 });
+function closeByClick(event) {
+	if (event.target === modal) {
+		toggleModal();
+	}
+}
+modal.addEventListener("click", closeByClick);
 
+function closeByPush(event) {
+	if (event.key === "Escape" || event.keyCode === 27) {
+		toggleModal();
+	}
+}
+window.addEventListener("keydown", closeByPush);
 GALLERYs.addEventListener('click', e => {
   const movieCard = e.target.closest('.MovieCard');
 
