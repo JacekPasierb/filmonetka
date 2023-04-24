@@ -10,8 +10,17 @@ const REFS = {
 	GALLERY: tools.qs(".Gallery"),
 };
 
+const prevSearch = document.getElementById('prevSearch')
+const nextSearch = document.getElementById('nextSearch')
+const currentSearch = document.getElementById('currentSearch')
+const prvS = document.getElementById('prvS')
+const prvprvS = document.getElementById('prvprvS')
+const nxtS = document.getElementById('nxtS')
+const nxtnxtS = document.getElementById('nxtnxtS')
+
 const getByKeyword = async (query, page) => {
 	const url = `${API_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`;
+	
 	return await axios
 		.get(url)
 		.then((response) => {
@@ -146,41 +155,94 @@ const genresId = [
 ];
 
 	let currentSearchPage = 1
-    let nextSearchPage = currentSearchPage + 1;
-    let prevSearchPage = currentSearchPage - 1;
+	let nxtSPage = 2;
+	let nxtnxtSPage = 3
+	let prvSPage = 1;
+	let prvprvSPage = 1;
     let totalSearchPages = 100
+	let nextSearchPage = 1
     
 prevSearch.addEventListener('click', () => {
     if(prevSearchPage > 0){
-      pageCallSearch(prevSearchPage);
+		pageCallSearch(prevSearchPage);
     }
+  })
+  prvS.addEventListener('click', () => {
+	if(prvSPage > 0){
+		pageCallSearch(prvSPage);
+	}
+  })
+  prvprvS.addEventListener('click', () => {
+	if(prvprvSPage > 0){
+		pageCallSearch(prvprvSPage);
+	}
   })
   
   nextSearch.addEventListener('click', () => {
-    if(nextSearchPage <= totalSearchPages){
-      pageCallSearch(nextSearchPage);
+    if(nextSearchPage > 0){
+		pageCallSearch(nextSearchPage);
     }
+  })
+  nxtS.addEventListener('click', () => {
+	if(nxtSPage <= totalSearchPages){
+		pageCallSearch(nxtSPage);
+	}
+  })
+  nxtnxtS.addEventListener('click', () => {
+	if(nxtnxtSPage <= totalSearchPages){
+		pageCallSearch(nxtnxtSPage);
+	}
   })
 
   function pageCallSearch(page){
         getByKeyword(query, page).then((data) => {
         if(data.total_pages !== 0) {
             currentSearchPage = data.page;
+			nxtSPage = currentSearchPage + 1;
+			nxtnxtSPage = currentSearchPage + 2;
+			prvSPage = currentSearchPage - 1;
+			prvprvSPage = currentSearchPage - 2;
             nextSearchPage = currentSearchPage + 1;
             prevSearchPage = currentSearchPage - 1;
             totalSearchPages = data.total_pages;
+
             currentSearch.innerText = currentSearchPage;
+			nxtS.innerText = nxtSPage;
+			nxtnxtS.innerText = nxtnxtSPage;
+			prvS.innerText = prvSPage;
+			prvprvS.innerText = prvprvSPage;
             }
-if(currentSearchPage <= 1){
-  prevSearch.classList.add('disabled');
-  nextSearch.classList.remove('disabled')
-}else if(currentSearchPage>= totalSearchPages){
-  prevSearch.classList.remove('disabled');
-   nextSearch.classList.add('disabled')
-}else{
-  prevSearch.classList.remove('disabled');
-   nextSearch.classList.remove('disabled')
-}
+
+			if(currentSearchPage <= 2){
+				prvprvS.style.display = "none";
+				prvprvS.innerText = 1;
+			  }else{
+				prvprvS.style.display = "flex";
+			  }
+			  if(currentSearchPage +1>= totalSearchPages){
+				nxtnxtS.style.display = "none";
+				nxtnxtS.innerText = totalSearchPages;
+			  }else{
+				nxtnxtS.style.display = "flex"
+			  }
+	  
+			   if(currentSearchPage <= 1){
+				prevSearch.classList.add('disabled');
+				nextSearch.classList.remove('disabled')
+				prvS.style.display = "none";
+				prvS.innerText = 1;
+			  }
+			  else if(currentSearchPage>= totalSearchPages){
+				prevSearch.classList.remove('disabled');
+				nextSearch.classList.add('disabled')
+				nxtS.style.display = "none";
+				nxtS.innerText = totalSearchPages;
+			  }else{
+				prevSearch.classList.remove('disabled');
+				nextSearch.classList.remove('disabled');
+				prvS.style.display = "flex";
+				nxtS.style.display = "flex";
+			  }
 REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
 })
 }
@@ -215,11 +277,57 @@ function SearchByKeywordWrongName(e) {
 			return;
 		}
 		REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
+		currentSearchPage = page;
+		nxtSPage = currentSearchPage + 1;
+		nxtnxtSPage = currentSearchPage + 2;
+		prvSPage = currentSearchPage - 1;
+		prvprvSPage = currentSearchPage - 2;
+		nextSearchPage = currentSearchPage + 1;
+		prevSearchPage = currentSearchPage - 1;
+		totalPages = data.total_pages;
+
+		currentSearch.innerText = currentSearchPage;
+		nxtS.innerText = nxtSPage;
+		nxtnxtS.innerText = nxtnxtSPage;
+		prvS.innerText = prvSPage;
+		prvprvS.innerText = prvprvSPage;
+
+		if(currentSearchPage <= 2){
+			prvprvS.style.display = "none";
+			prvprvS.innerText = 1;
+		  }else{
+			prvprvS.style.display = "flex";
+		  }
+		  if(currentSearchPage +1>= totalSearchPages){
+			nxtnxtS.style.display = "none";
+			nxtnxtS.innerText = totalSearchPages;
+		  }else{
+			nxtnxtS.style.display = "flex"
+		  }
+	
+		   if(currentSearchPage <= 1){
+			prevSearch.classList.add('disabled');
+			nextSearch.classList.remove('disabled')
+			prvS.style.display = "none";
+			prvS.innerText = 1;
+		  }
+		  else if(currentSearchPage>= totalSearchPages){
+			prevSearch.classList.remove('disabled');
+			nextSearch.classList.add('disabled')
+			nxtS.style.display = "none";
+			nxtS.innerText = totalSearchPages;
+		  }else{
+			prevSearch.classList.remove('disabled');
+			nextSearch.classList.remove('disabled');
+			prvS.style.display = "flex";
+			nxtS.style.display = "flex";
+		  }
 	});
 }
 
 document.getElementById("SearchBtn").onclick = function () {
 	document.getElementById("HideGalleryOnKeyword").style.display = "none";
 	document.getElementById("searchPagination").style.display = "flex";
+
 };
 
