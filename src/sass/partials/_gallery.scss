@@ -105,16 +105,25 @@
 
   &__item {
     font-weight: 500;
-    font-size: 20px;
-    line-height: 1.33;
+    font-size: 12px;
+    line-height: 16px;
     color: var(--text_color_2);
 
     @media screen and (min-width: 760px) {
       font-size: 12px;
-      line-height: 1.2;
+      line-height: 16px;
     }
+
+    @media screen and (min-width: 1200px) {
+      font-size: 20px;
+      line-height: 24px;
+    }
+    // &--title {
+    //   text-transform: uppercase;
+    //   color: var(--text_color_1);
   }
-  &--title {
+
+  .movieInfo--title {
     text-transform: uppercase;
     color: var(--text_color_1);
   }

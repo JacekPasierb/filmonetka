@@ -80,27 +80,40 @@ body {
 }
 
 .Header {
-  display: flex;
-  display: block;
-  background-image: url(/src/images/tekstura_2.jpg);
+  height: 230px;
+  background-image: url("/src/images/header_mobile_1x.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  height: 230px;
+  padding: 40px 20px 0;
+  margin-bottom: 20px;
+}
+@media screen and (min-device-pixel-ratio: 2) and (max-width: 767px), screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 767px), screen and (min-resolution: 192dpi) and (max-width: 767px), screen and (min-resolution: 2dppx) and (max-width: 767px) {
+  .Header {
+    background-image: url("/src/images/header_mobile_2x.png");
+  }
 }
 @media screen and (min-width: 768px) {
   .Header {
     height: 216px;
+    background-image: url("/src/images/header_tablet_1x.png");
+    padding: 40px 32px 0;
   }
 }
-@media screen and (min-device-pixel-ratio: 2), screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 768px), screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 768px), screen and (min-resolution: 192dpi) and (min-width: 768px), screen and (min-resolution: 2dppx) and (min-width: 768px) {
   .Header {
-    background-image: url("/src/images/tekstura_2@2x.jpg");
+    background-image: url("/src/images/header_tablet_2x.png");
   }
 }
-@media screen and (min-device-pixel-ratio: 2), screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
+@media screen and (min-width: 1280px) {
   .Header {
-    background-image: url("/src/images/tekstura_2@3x.jpg");
+    height: 216px;
+    background-image: url("/src/images/header_desktop_1x.png");
+    padding: 40px 32px 0;
+  }
+}
+@media screen and (min-device-pixel-ratio: 2) and (min-width: 1280px), screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1280px), screen and (min-resolution: 192dpi) and (min-width: 1280px), screen and (min-resolution: 2dppx) and (min-width: 1280px) {
+  .Header {
+    background-image: url("/src/images/header_desktop_2x.png");
   }
 }
 
@@ -434,41 +447,43 @@ body {
 }
 
 .container-background {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
   height: 230px;
-  background-image: url("/src/images/tekstura3_sm@1x.jpg");
+  background-image: url("/src/images/liblary_mobile_1x.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 40px 20px 0;
+  margin-bottom: 20px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .container-background {
+    background-image: url("/src/images/liblary_mobile_2x.png");
+  }
 }
 @media screen and (min-width: 768px) {
   .container-background {
-    height: 219px;
-    background-image: url("/src/images/tekstura3_md@1x.jpg");
+    height: 216px;
+    background-image: url("/src/images/liblary_tablet_1x.png");
+    padding: 40px 32px 0;
   }
 }
-@media sreen and (min-width: 1280px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .container-background {
+    background-image: url("/src/images/liblary_tablet_2x.png");
+  }
+}
+@media screen and (min-width: 1280px) {
   .container-background {
     height: 216px;
-    background-image: url("/src/images/tekstura3_lg@1x.jpg");
+    background-image: url("/src/images/liblary_desktop_1x.png");
+    padding: 40px 32px 0;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .container-background {
+    background-image: url("/src/images/liblary_desktop_2x.png");
   }
 }
 
-@media (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .container-background {
-    background-image: url("/src/images/tekstura3_sm@2x.jpg");
-  }
-}
-@media (min-device-pixel-ratio: 2) and (min-width: 768px) and (max-width: 1279px), (-webkit-min-device-pixel-ratio: 2) and (min-width: 768px) and (max-width: 1279px), (min-resolution: 192dpi) and (min-width: 768px) and (max-width: 1279px), (min-resolution: 2dppx) and (min-width: 768px) and (max-width: 1279px) {
-  .container-background {
-    background-image: url("/src/images/tekstura3_md@2x.jpg");
-  }
-}
-@media (min-device-pixel-ratio: 2) and (min-width: 1280px), (-webkit-min-device-pixel-ratio: 2) and (min-width: 1280px), (min-resolution: 192dpi) and (min-width: 1280px), (min-resolution: 2dppx) and (min-width: 1280px) {
-  .container-background {
-    background-image: url("/src/images/tekstura3_lg@2x.jpg");
-  }
-}
 .header-library__image-link {
   display: flex;
   align-items: center;
@@ -534,6 +549,21 @@ body {
   color: var(--header_text);
 }
 
+.navigation-list__link--active {
+  position: relative;
+  text-decoration: none;
+}
+
+.navigation-list__link--active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: var(--header_underline);
+  bottom: -2px;
+  left: 0;
+}
+
 .buttons {
   display: flex;
   justify-content: center;
@@ -557,9 +587,7 @@ body {
 .button {
   width: 129.53;
   height: 44px;
-  border: 1px solid;
-  outline-color: var(--header_text);
-  border-color: var(--header_text);
+  border: 1px solid var(--header_text);
   border-radius: 5px;
   font-weight: 500;
   font-size: 12px;
@@ -792,47 +820,29 @@ body {
 }
 .movieInfo__item {
   font-weight: 500;
-  font-size: 20px;
-  line-height: 1.33;
+  font-size: 12px;
+  line-height: 16px;
   color: var(--text_color_2);
 }
 @media screen and (min-width: 760px) {
   .movieInfo__item {
     font-size: 12px;
-    line-height: 1.2;
+    line-height: 16px;
   }
 }
-.movieInfo--title {
+@media screen and (min-width: 1200px) {
+  .movieInfo__item {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+.movieInfo .movieInfo--title {
   text-transform: uppercase;
   color: var(--text_color_1);
 }
 
 .is-hidden {
   transform: scale(0%);
-}
-
-.button {
-  background: var(--main-color);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 30px;
-  text-align: center;
-  letter-spacing: 0.06em;
-  color: var(--third-color);
-  padding: 10px 42px;
-  cursor: pointer;
-  border: 0px;
-  transition-duration: 250ms;
-  transition-property: background-color, color, box-shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.button:focus, .button:hover {
-  background-color: var(--main-color);
-  color: var(--third-color);
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
 .modal {

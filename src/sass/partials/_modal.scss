@@ -1,33 +1,33 @@
 .is-hidden {
   transform: scale(0%);
 }
+// Poniższy kod nadpisywał stylowanie buttonów w myLibrary
+// .button {
+//   background: var(--header_text);
+//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+//   border-radius: 4px;
+//   font-style: normal;
+//   font-weight: 700;
+//   font-size: 16px;
+//   line-height: 30px;
+//   text-align: center;
+//   letter-spacing: 0.06em;
+//   color: var(--header_text);
+//   padding: 9px 37px;
+//   cursor: pointer;
+//   border: 0px;
+//   transition-duration: 250ms;
+//   transition-property: background-color, color, box-shadow;
+//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-.button {
-  background: var(--main-color);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 30px;
-  text-align: center;
-  letter-spacing: 0.06em;
-  color: var(--third-color);
-  padding: 10px 42px;
-  cursor: pointer;
-  border: 0px;
-  transition-duration: 250ms;
-  transition-property: background-color, color, box-shadow;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:focus,
-  &:hover {
-    background-color: var(--main-color);
-    color: var(--third-color);
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
-      0px 2px 2px rgba(0, 0, 0, 0.12);
-  }
-}
+//   &:focus,
+//   &:hover {
+//     background-color: var(--button_active);
+//     color: var(--text_color_3);
+//     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+//       0px 2px 2px rgba(0, 0, 0, 0.12);
+//   }
+// }
 
 .modal {
   position: fixed;

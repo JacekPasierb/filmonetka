@@ -12,25 +12,24 @@ export function renderMovies(data) {
   data.forEach(markup => {
     const { title, name, release_date, first_air_date, poster_path, genre_ids } = markup;
     const moviePoster = `https://image.tmdb.org/t/p/w500/${poster_path}`;
-    const movieDate = release_date.slice(0, 4) : first_air_date.slice(0, 4)
+    const movieDate = release_date.slice(0, 4) : first_air_date.slice(0, 4);
     const movieName = title ? title : name;
     let matchedGenres = genre_ids
-    .map(id => {
-      const genre = Genres.movieGenres.find(genre => genre.id === id);
-      return genre ? [`${genre.name}`] : '';
-    })
-    .filter(Boolean);
+      .map(id => {
+        const genre = Genres.movieGenres.find(genre => genre.id === id);
+        return genre ? [`${genre.name}`] : '';
+      })
+      .filter(Boolean);
 
-  // Wyświetlane są tylko dwa pierwsze gatunki filmowe
-  if (matchedGenres.length > 2) {
-    matchedGenres = matchedGenres.slice(0, 2).join(', ') + ' (...)';
-  } else {
-    matchedGenres = matchedGenres.join(', ');
-  }
+    // Wyświetlanie gatunków filmowych
+    if (matchedGenres.length > 2) {
+      matchedGenres = matchedGenres.slice(0, 3).join(', ');
+    } else {
+      matchedGenres = matchedGenres.join(', ');
+    }
     const markupEl = document.createElement('li');
     markupEl.classList.add('movie-container__card');
-    markupEl.innerHTML = 
-    `
+    markupEl.innerHTML = `
     <div class="poster"><img class="poster__img" src="${moviePoster}" alt="${title} poster" loading="lazy" /></div>
     <div class="movieInfo">
        <p class="movieInfo__item movieInfo--title">${movieName}</p>
@@ -38,11 +37,10 @@ export function renderMovies(data) {
              ${matchedGenres} | ${movieDate}
       </p>
     </div>
-    `
+    `;
     moviesGallery.appendChild(markupEl);
-  })
+  });
 }
-
 
 // Próba działania na kodzie Gabriela żeby coś zadziałało
 // Trending.getTrendingMovies()

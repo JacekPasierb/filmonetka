@@ -1,29 +1,68 @@
 // Header
-
 .Header {
-  display: flex;
-  display: block;
-  background-image: url(/src/images/tekstura_2.jpg);
+  height: 230px;
+  background-image: url('/src/images/header_mobile_1x.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  height: 230px;
+  padding: 40px 20px 0;
+  margin-bottom: 20px;
+
+  @media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
+    screen and (min-resolution: 192dpi) and (max-width: 767px),
+    screen and (min-resolution: 2dppx) and (max-width: 767px) {
+    background-image: url('/src/images/header_mobile_2x.png');
+  }
 
   @media screen and (min-width: 768px) {
     height: 216px;
+    background-image: url('/src/images/header_tablet_1x.png');
+    padding: 40px 32px 0;
   }
 
-  @media screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
-    screen and (min-resolution: 2dppx) {
-    background-image: url('/src/images/tekstura_2@2x.jpg');
+  @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+    screen and (min-resolution: 192dpi) and (min-width: 768px),
+    screen and (min-resolution: 2dppx) and (min-width: 768px) {
+    background-image: url('/src/images/header_tablet_2x.png');
   }
-  @media screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
-    screen and (min-resolution: 2dppx) {
-    background-image: url('/src/images/tekstura_2@3x.jpg');
+
+  @media screen and (min-width: 1280px) {
+    height: 216px;
+    background-image: url('/src/images/header_desktop_1x.png');
+    padding: 40px 32px 0;
+  }
+
+  @media screen and (min-device-pixel-ratio: 2) and (min-width: 1280px),
+    screen and (min-resolution: 192dpi) and (min-width: 1280px),
+    screen and (min-resolution: 2dppx) and (min-width: 1280px) {
+    background-image: url('/src/images/header_desktop_2x.png');
   }
 }
+
+// Poniżej stylowanie Klaudi
+// .Header {
+//   display: flex;
+//   display: block;
+//   background-image: url('/src/images/header_mobile_1x.png');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center;
+//   height: 230px;
+
+//   @media screen and (min-width: 768px) {
+//     height: 216px;
+//   }
+
+//   @media screen and (min-device-pixel-ratio: 2),
+//     screen and (min-resolution: 192dpi),
+//     screen and (min-resolution: 2dppx) {
+//     background-image: url('/src/images/tekstura_2@2x.jpg');
+//   }
+//   @media screen and (min-device-pixel-ratio: 2),
+//     screen and (min-resolution: 192dpi),
+//     screen and (min-resolution: 2dppx) {
+//     background-image: url('/src/images/tekstura_2@3x.jpg');
+//   }
+// }
 
 .HeaderUl {
   list-style: none;
@@ -340,32 +379,51 @@
     column-gap: 16px;
   }
 }
-
 .container-background {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
   height: 230px;
-  background-image: url('/src/images/tekstura3_sm@1x.jpg');
+  background-image: url('/src/images/liblary_mobile_1x.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 40px 20px 0;
+  margin-bottom: 20px;
+
+  @media /* only for retina displays */ only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    background-image: url('/src/images/liblary_mobile_2x.png');
+  }
+
   @media screen and (min-width: 768px) {
-    height: 219px;
-    background-image: url('/src/images/tekstura3_md@1x.jpg');
-  }
-  @media sreen and (min-width: 1280px) {
     height: 216px;
-    background-image: url('/src/images/tekstura3_lg@1x.jpg');
+    background-image: url('/src/images/liblary_tablet_1x.png');
+    padding: 40px 32px 0;
   }
-}
-@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .container-background {
-    background-image: url('/src/images/tekstura3_sm@2x.jpg');
-    @media (min-width: 768px) and (max-width: 1279px) {
-      background-image: url('/src/images/tekstura3_md@2x.jpg');
-    }
-    @media (min-width: 1280px) {
-      background-image: url('/src/images/tekstura3_lg@2x.jpg');
-    }
+
+  @media /* only for retina displays */ only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    background-image: url('/src/images/liblary_tablet_2x.png');
+  }
+
+  @media screen and (min-width: 1280px) {
+    height: 216px;
+    background-image: url('/src/images/liblary_desktop_1x.png');
+    padding: 40px 32px 0;
+  }
+
+  @media /* only for retina displays */ only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    background-image: url('/src/images/liblary_desktop_2x.png');
   }
 }
 
@@ -389,6 +447,7 @@
   height: 24px;
   fill: var(--header_text);
 }
+
 .header-library__image-span {
   display: none;
   @media screen and (min-width: 768px) {
@@ -420,6 +479,20 @@
   color: var(--header_text);
 }
 
+.navigation-list__link--active {
+  position: relative;
+  text-decoration: none;
+}
+.navigation-list__link--active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: var(--header_underline);
+  bottom: -2px;
+  left: 0;
+}
+
 .buttons {
   display: flex;
   justify-content: center;
@@ -439,9 +512,9 @@
 .button {
   width: 129.53;
   height: 44px;
-  border: 1px solid;
-  outline-color: var(--header_text);
-  border-color: var(--header_text);
+  border: 1px solid var(--header_text);
+  // outline-color: var(--header_text);
+  // border-color: 1px solid var(--header_text);
   border-radius: 5px;
   font-weight: 500;
   font-size: 12px;
