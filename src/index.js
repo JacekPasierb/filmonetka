@@ -1,6 +1,7 @@
 
 import './sass/main.scss';
 import './js/keywordCopy';
+// import './js/keyword';
 // import './js/renderMovieCards';
 // import './js/trendingMovie';
 // import { renderMovieCard } from './js/renderMovieCards';
