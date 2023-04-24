@@ -7,12 +7,21 @@ import refs from './refs';
 // import { getTrendMovies } from './trendingMovie.js';
 // import { currentPage } from "./trendingMovie.js"
 
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-const current = document.getElementById('current');
+
+const prev = document.getElementById('prev')
+const next = document.getElementById('next')
+const current = document.getElementById('current')
+const prv = document.getElementById('prv')
+const prvprv = document.getElementById('prvprv')
+const nxt = document.getElementById('nxt')
+const nxtnxt = document.getElementById('nxtnxt')
+
 
 let currentPage = 1;
-let nextPage = 2;
+let nxtPage = 2;
+let nxtnxtPage = 3
+let prvPage = 1;
+let prvprvPage = 1;
 let prevPage = 3;
 let lastUrl = '';
 let totalPages = 100;
@@ -32,20 +41,49 @@ function getTrendMovies(url) {
         renderMovies(data.results);
         currentPage = data.page;
         nextPage = currentPage + 1;
+        nxtPage = currentPage + 1;
+        nxtnxtPage = currentPage + 2;
         prevPage = currentPage - 1;
+        prvPage = currentPage - 1;
+        prvprvPage = currentPage - 2;
         totalPages = data.total_pages;
 
         current.innerText = currentPage;
+        nxt.innerText = nxtPage;
+        nxtnxt.innerText = nxtnxtPage;
+        prv.innerText = prvPage;
+        prvprv.innerText = prvprvPage;
 
-        if (currentPage <= 1) {
+
+        if(currentPage <= 2){
+          prvprv.style.display = "none";
+          prvprv.innerText = 1;
+        }else{
+          prvprv.style.display = "flex";
+        }
+        if(currentPage +1>= totalPages){
+          nxtnxt.style.display = "none";
+          nxtnxt.innerText = totalPages;
+        }else{
+          nxtnxt.style.display = "flex"
+        }
+
+         if(currentPage <= 1){
           prev.classList.add('disabled');
-          next.classList.remove('disabled');
-        } else if (currentPage >= totalPages) {
+          next.classList.remove('disabled')
+          prv.style.display = "none";
+          prv.innerText = 1;
+        }
+        else if(currentPage>= totalPages){
           prev.classList.remove('disabled');
-          next.classList.add('disabled');
-        } else {
+          next.classList.add('disabled')
+          nxt.style.display = "none";
+        }else{
           prev.classList.remove('disabled');
           next.classList.remove('disabled');
+          prv.style.display = "flex";
+          nxt.style.display = "flex";
+
         }
       }
     });
@@ -94,27 +132,52 @@ prev.addEventListener('click', () => {
   if (prevPage > 0) {
     pageCall(prevPage);
   }
-});
+
+})
+prv.addEventListener('click', () => {
+  if(prvPage > 0){
+    pageCall(prvPage);
+  }
+})
+prvprv.addEventListener('click', () => {
+  if(prvprvPage > 0){
+    pageCall(prvprvPage);
+  }
+})
+
 
 next.addEventListener('click', () => {
   if (nextPage <= totalPages) {
     pageCall(nextPage);
   }
-});
+
+})
+nxt.addEventListener('click', () => {
+  if(nxtPage <= totalPages){
+    pageCall(nxtPage);
+  }
+})
+nxtnxt.addEventListener('click', () => {
+  if(nxtnxtPage <= totalPages){
+    pageCall(nxtnxtPage);
+  }
+})
 
 
 function pageCall(page){
 
   let urlSplit = lastUrl.split('?');
-  console.log(urlSplit);
+  // console.log(urlSplit);
   let queryParams = urlSplit[1].split('&');
-  console.log(queryParams);
-  let key = queryParams[queryParams.length - 1].split('=');
-  console.log(key);
-  if (key[0] != 'page') {
-    let url = lastUrl + '&page=' + page;
-    getTrendMovies(url);
-  } else {
+
+  // console.log(queryParams);
+  let key = queryParams[queryParams.length -1].split('=');
+  // console.log(key);
+  if(key[0] != 'page'){
+    let url = lastUrl + '&page='+page
+    getTrendMovies(url)
+  }else{
+
     key[1] = page.toString();
     let a = key.join('=');
     queryParams[queryParams.length - 1] = a;
