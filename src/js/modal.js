@@ -1,39 +1,41 @@
-import axios from "axios";
-import tools from "./tools";
-import { BASE_URL, API_KEY } from "./API_variables.js";
-const GALLERYs = tools.qs(".Gallery");
-const GALLERYtrend = tools.qs(".movie-section__card");
+import axios from 'axios';
+import tools from './tools';
+import { BASE_URL, API_KEY } from './API_variables.js';
 
-const modal = document.querySelector("[data-modal]");
-const closeModalBtn = document.querySelector("[data-modal-close]");
-const mov = tools.qs(".mov");
+const GALLERYs = tools.qs('.Gallery');
+const GALLERYtrend = tools.qs('.movie-section__card');
+
+const modal = document.querySelector('[data-modal]');
+const closeModalBtn = document.querySelector('[data-modal-close]');
+const mov = tools.qs('.mov');
 
 function toggleModal() {
-	modal.classList.toggle("is-hidden");
+  modal.classList.toggle('is-hidden');
 }
-const fetchMovie = async (movieId) => {
-	const response = await axios.get(
-		`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`,
-	);
 
-	const movie = response.data;
+const fetchMovie = async movieId => {
+  const response = await axios.get(
+    `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`,
+  );
 
-	return movie;
+  const movie = response.data;
+
+  return movie;
 };
-const searchMovieById = async (movieId) => {
-	try {
-		const movie = await fetchMovie(movieId);
+const searchMovieById = async movieId => {
+  try {
+    const movie = await fetchMovie(movieId);
 
-		const movieName = movie.title;
-		const vote = movie.vote_average.toFixed(1);
-		const votes = movie.vote_count;
-		const popularity = movie.popularity.toFixed(1);
-		const originalTitle = movie.original_title;
-		const genres = movie.genres.map((ob) => ob.name).join(" , ");
-		const overview = movie.overview;
+    const movieName = movie.title;
+    const vote = movie.vote_average.toFixed(1);
+    const votes = movie.vote_count;
+    const popularity = movie.popularity.toFixed(1);
+    const originalTitle = movie.original_title;
+    const genres = movie.genres.map(ob => ob.name).join(' , ');
+    const overview = movie.overview;
 
-		const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-		mov.innerHTML = ` 
+    const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    mov.innerHTML = ` 
 		<div class="row">
               <img class="modal__poster" src=${poster} alt="plakat filmu" sizes="(min-width: 1200px) 370px" />
 	          <div>
@@ -71,36 +73,50 @@ const searchMovieById = async (movieId) => {
 		                </div>
 		       </div>
 		</div>`;
-	} catch (error) {
-		console.log(error.message);
-	}
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
-closeModalBtn.addEventListener("click", (e) => {
-	e.preventDefault();
-	toggleModal();
+closeModalBtn.addEventListener('click', e => {
+  e.preventDefault();
+  toggleModal();
 });
 
-GALLERYs.addEventListener("click", (e) => {
-	const movieCard = e.target.closest(".MovieCard");
+function closeByClick(event) {
+  if (event.target === modal) {
+    toggleModal();
+  }
+}
+modal.addEventListener('click', closeByClick);
 
-	if (movieCard) {
-		const movieId = movieCard.dataset.movie;
+function closeByPush(event) {
+  if (event.key === 'Escape' || event.keyCode === 27) {
+    toggleModal();
+  }
+}
+window.addEventListener('keydown', closeByPush);
 
-		toggleModal();
+GALLERYs.addEventListener('click', e => {
+  const movieCard = e.target.closest('.MovieCard');
 
-		searchMovieById(movieId);
-	}
+  if (movieCard) {
+    const movieId = movieCard.dataset.movie;
+
+    toggleModal();
+
+    searchMovieById(movieId);
+  }
 });
 
-GALLERYtrend.addEventListener("click", (e) => {
-	const movieCard = e.target.closest(".movie-container__card");
+GALLERYtrend.addEventListener('click', e => {
+  const movieCard = e.target.closest('.movie-container__card');
 
-	if (movieCard) {
-		const movieId = movieCard.dataset.id;
+  if (movieCard) {
+    const movieId = movieCard.dataset.id;
 
-		toggleModal();
+    toggleModal();
 
-		searchMovieById(movieId);
-	}
+    searchMovieById(movieId);
+  }
 });
