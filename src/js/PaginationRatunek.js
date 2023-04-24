@@ -15,7 +15,6 @@ let prevPage = 3;
 let lastUrl = '';
 let totalPages = 100;
 
-
 const moviesGallery = document.querySelector('.movie-section__card');
 
 getTrendMovies(TREND_URL);
@@ -70,7 +69,7 @@ function renderMovies(data) {
   }
     const markupEl = document.createElement('li');
     markupEl.classList.add('movie-container__card');
-     markupEl.setAttribute("data-id",`${markup.id}`);
+    markupEl.setAttribute("data-id",`${markup.id}`);
     markupEl.innerHTML = 
     `
     <div class="poster"><img class="poster__img" src="${moviePoster}" alt="${title} poster" loading="lazy" /></div>
@@ -97,8 +96,6 @@ next.addEventListener('click', () => {
   }
 })
 
-console.log(lastUrl)
-
 function pageCall(page){
   let urlSplit = lastUrl.split('?');
   console.log(urlSplit);
@@ -118,3 +115,4 @@ function pageCall(page){
     getTrendMovies(url);
   }
 }
+

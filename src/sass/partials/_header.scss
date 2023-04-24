@@ -314,10 +314,6 @@
   }
 }
 
-.GalleryBcg {
-  background-color: #e5e5e5;
-}
-
 .GalleryCointainer {
   @extend .container;
   list-style: none;
@@ -461,4 +457,8 @@
 .button:focus {
   background-color: var(--button_active);
   border-color: transparent;
+}
+
+#searchPagination {
+  display:none
 }
