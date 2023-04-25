@@ -148,7 +148,7 @@ body {
 }
 
 .HeaderNav {
-  padding-bottom: 54px;
+  padding-bottom: 20px;
   align-items: center;
   display: flex;
   position: relative;
@@ -861,7 +861,7 @@ modal__loader {
     padding-bottom: 61px;
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .movie-section {
     padding-top: 60px;
     padding-bottom: 60px;
@@ -893,7 +893,7 @@ modal__loader {
     padding: 0 32px;
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .movie-section__container {
     -moz-column-gap: 16px;
          column-gap: 16px;
@@ -915,7 +915,7 @@ modal__loader {
     width: calc((100% - 32px) / 2);
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .movie-container__card {
     width: calc((100% - 48px) / 3);
   }
@@ -937,7 +937,7 @@ modal__loader {
     height: 455px;
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .poster {
     width: 395px;
     height: 574px;
@@ -961,7 +961,7 @@ modal__loader {
     padding-bottom: 8px;
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .movieInfo {
     padding-top: 20px;
     padding-left: 4px;
@@ -971,13 +971,13 @@ modal__loader {
 }
 .movieInfo__item {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 12px;
   line-height: 1.33;
   color: var(--text_color_2);
 }
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 1280px) {
   .movieInfo__item {
-    font-size: 12px;
+    font-size: 20px;
     line-height: 1.2;
   }
 }
@@ -1242,6 +1242,7 @@ modal__loader {
 .pagination__page-ico:hover {
   background-color: #ff6b08;
   stroke: #fff;
+  fill: #fff;
 }
 .pagination__current {
   font-size: 12px;
