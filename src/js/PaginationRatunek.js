@@ -18,11 +18,12 @@ const nxtnxt = document.getElementById('nxtnxt')
 
 
 let currentPage = 1;
+let nextPage = 2
 let nxtPage = 2;
 let nxtnxtPage = 3
 let prvPage = 1;
 let prvprvPage = 1;
-let prevPage = 3;
+let prevPage = 1;
 let lastUrl = '';
 let totalPages = 100;
 

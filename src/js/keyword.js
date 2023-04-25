@@ -155,12 +155,14 @@ const genresId = [
 ];
 
 	let currentSearchPage = 1
+	let nextSearchPage = 2
 	let nxtSPage = 2;
 	let nxtnxtSPage = 3
+	let prevSearchPage = 1
 	let prvSPage = 1;
 	let prvprvSPage = 1;
     let totalSearchPages = 100
-	let nextSearchPage = 1
+
     
 prevSearch.addEventListener('click', () => {
     if(prevSearchPage > 0){
