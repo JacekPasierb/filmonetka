@@ -7,20 +7,18 @@ import refs from './refs';
 // import { getTrendMovies } from './trendingMovie.js';
 // import { currentPage } from "./trendingMovie.js"
 
-
-const prev = document.getElementById('prev')
-const next = document.getElementById('next')
-const current = document.getElementById('current')
-const prv = document.getElementById('prv')
-const prvprv = document.getElementById('prvprv')
-const nxt = document.getElementById('nxt')
-const nxtnxt = document.getElementById('nxtnxt')
-
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+const current = document.getElementById('current');
+const prv = document.getElementById('prv');
+const prvprv = document.getElementById('prvprv');
+const nxt = document.getElementById('nxt');
+const nxtnxt = document.getElementById('nxtnxt');
 
 let currentPage = 1;
-let nextPage = 2
+let nextPage = 2;
 let nxtPage = 2;
-let nxtnxtPage = 3
+let nxtnxtPage = 3;
 let prvPage = 1;
 let prvprvPage = 1;
 let prevPage = 1;
@@ -30,9 +28,10 @@ let totalPages = 100;
 const moviesGallery = document.querySelector('.movie-section__card');
 
 getTrendMovies(TREND_URL);
-showHideLoader(refs.loader);
+
 function getTrendMovies(url) {
   lastUrl = url;
+  showHideLoader(refs.loader);
   fetch(url)
     .then(res => res.json())
 
@@ -55,36 +54,33 @@ function getTrendMovies(url) {
         prv.innerText = prvPage;
         prvprv.innerText = prvprvPage;
 
-
-        if(currentPage <= 2){
-          prvprv.style.display = "none";
+        if (currentPage <= 2) {
+          prvprv.style.display = 'none';
           prvprv.innerText = 1;
-        }else{
-          prvprv.style.display = "flex";
+        } else {
+          prvprv.style.display = 'flex';
         }
-        if(currentPage +1>= totalPages){
-          nxtnxt.style.display = "none";
+        if (currentPage + 1 >= totalPages) {
+          nxtnxt.style.display = 'none';
           nxtnxt.innerText = totalPages;
-        }else{
-          nxtnxt.style.display = "flex"
+        } else {
+          nxtnxt.style.display = 'flex';
         }
 
-         if(currentPage <= 1){
+        if (currentPage <= 1) {
           prev.classList.add('disabled');
-          next.classList.remove('disabled')
-          prv.style.display = "none";
+          next.classList.remove('disabled');
+          prv.style.display = 'none';
           prv.innerText = 1;
-        }
-        else if(currentPage>= totalPages){
+        } else if (currentPage >= totalPages) {
           prev.classList.remove('disabled');
-          next.classList.add('disabled')
-          nxt.style.display = "none";
-        }else{
+          next.classList.add('disabled');
+          nxt.style.display = 'none';
+        } else {
           prev.classList.remove('disabled');
           next.classList.remove('disabled');
-          prv.style.display = "flex";
-          nxt.style.display = "flex";
-
+          prv.style.display = 'flex';
+          nxt.style.display = 'flex';
         }
       }
     });
@@ -105,9 +101,9 @@ function renderMovies(data) {
       })
       .filter(Boolean);
 
-    // Wyświetlane są tylko dwa pierwsze gatunki filmowe
+    // Wyświetlane są gatunki filmowe
     if (matchedGenres.length > 2) {
-      matchedGenres = matchedGenres.slice(0, 2).join(', ') + ' (...)';
+      matchedGenres = matchedGenres.slice(0, 3).join(', ');
     } else {
       matchedGenres = matchedGenres.join(', ');
     }
@@ -133,52 +129,46 @@ prev.addEventListener('click', () => {
   if (prevPage > 0) {
     pageCall(prevPage);
   }
-
-})
+});
 prv.addEventListener('click', () => {
-  if(prvPage > 0){
+  if (prvPage > 0) {
     pageCall(prvPage);
   }
-})
+});
 prvprv.addEventListener('click', () => {
-  if(prvprvPage > 0){
+  if (prvprvPage > 0) {
     pageCall(prvprvPage);
   }
-})
-
+});
 
 next.addEventListener('click', () => {
   if (nextPage <= totalPages) {
     pageCall(nextPage);
   }
-
-})
+});
 nxt.addEventListener('click', () => {
-  if(nxtPage <= totalPages){
+  if (nxtPage <= totalPages) {
     pageCall(nxtPage);
   }
-})
+});
 nxtnxt.addEventListener('click', () => {
-  if(nxtnxtPage <= totalPages){
+  if (nxtnxtPage <= totalPages) {
     pageCall(nxtnxtPage);
   }
-})
+});
 
-
-function pageCall(page){
-
+function pageCall(page) {
   let urlSplit = lastUrl.split('?');
   // console.log(urlSplit);
   let queryParams = urlSplit[1].split('&');
 
   // console.log(queryParams);
-  let key = queryParams[queryParams.length -1].split('=');
+  let key = queryParams[queryParams.length - 1].split('=');
   // console.log(key);
-  if(key[0] != 'page'){
-    let url = lastUrl + '&page='+page
-    getTrendMovies(url)
-  }else{
-
+  if (key[0] != 'page') {
+    let url = lastUrl + '&page=' + page;
+    getTrendMovies(url);
+  } else {
     key[1] = page.toString();
     let a = key.join('=');
     queryParams[queryParams.length - 1] = a;
@@ -186,5 +176,5 @@ function pageCall(page){
     let url = urlSplit[0] + '?' + b;
     getTrendMovies(url);
   }
+  document.body.scrollTop = document.documentElement.scrollTo({top: 0, behavior: 'smooth'})
 }
-

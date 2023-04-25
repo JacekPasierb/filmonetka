@@ -247,6 +247,7 @@ prevSearch.addEventListener('click', () => {
 			  }
 REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
 })
+document.body.scrollTop = document.documentElement.scrollTo({top: 0, behavior: 'smooth'})
 }
 
 
@@ -263,6 +264,8 @@ function SearchByKeywordWrongName(e) {
 			REFS.FORM_NOTIFY.classList.add("IsHidden");
 		}, 10000);
 		REFS.FORM_NOTIFY.classList.remove("IsHidden");
+		document.getElementById("searchPagination").style.display = "none";
+		document.getElementById("gallery-main").style.display = "none";
 		REFS.FORM_NOTIFY.textContent =
 			"Search result not successful. Enter the correct movie name";
 		return;
@@ -273,12 +276,15 @@ function SearchByKeywordWrongName(e) {
 			setTimeout(() => {
 				REFS.FORM_NOTIFY.classList.add("IsHidden");
 			}, 10000);
+			document.getElementById("searchPagination").style.display = "none";
+			document.getElementById("gallery-main").style.display = "none";
 			REFS.FORM_NOTIFY.classList.remove("IsHidden");
 			REFS.FORM_NOTIFY.textContent =
 				"Search result not successful. Enter the correct movie name";
 			return;
 		}
 		REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
+		document.getElementById("gallery-main").style.display = "flex";
 		currentSearchPage = page;
 		nxtSPage = currentSearchPage + 1;
 		nxtnxtSPage = currentSearchPage + 2;
@@ -286,7 +292,7 @@ function SearchByKeywordWrongName(e) {
 		prvprvSPage = currentSearchPage - 2;
 		nextSearchPage = currentSearchPage + 1;
 		prevSearchPage = currentSearchPage - 1;
-		totalPages = data.total_pages;
+		totalSearchPages = data.total_pages;
 
 		currentSearch.innerText = currentSearchPage;
 		nxtS.innerText = nxtSPage;
