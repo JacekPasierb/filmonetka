@@ -247,6 +247,7 @@ prevSearch.addEventListener('click', () => {
 			  }
 REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
 })
+document.body.scrollTop = document.documentElement.scrollTo({top: 0, behavior: 'smooth'})
 }
 
 
