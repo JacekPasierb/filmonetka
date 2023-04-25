@@ -80,20 +80,25 @@ const searchMovieById = async movieId => {
 				const queueButton = document.querySelector("#queue");
         if (watched.find(obj=>obj.id == movie.id)) {
 		watchedButton.style.background = "green";
-    watchedButton.textContent = "DELETED TO WATCHED";
+    watchedButton.textContent = "DELETED FROM WATCHED";
 		return;
 	}
+   if (queue.find((obj) => obj.id == movie.id)) {
+				queueButton.style.background = "green";
+				queueButton.textContent = "DELETED FROM QUEUE";
+				return;
+			}
   watchedButton.addEventListener("click", (e) => {
 	e.preventDefault();
 	watchedButton.style.background = "green";
-  watchedButton.textContent = "DELETED TO WATCHED";
+  watchedButton.textContent = "DELETED FROM WATCHED";
 	onAddToWatched(movie, watchedButton);
   
 });
  queueButton.addEventListener("click", (e) => {
 	e.preventDefault();
 	queueButton.style.background = "green";
- queueButton.textContent = "DELETED TO QUEUE";
+ queueButton.textContent = "DELETED FROM QUEUE";
 	onAddToQueue(movie, queueButton);
   
 });
