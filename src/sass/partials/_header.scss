@@ -73,13 +73,18 @@
 }
 
 .HeaderNav {
-  padding-bottom: 20px;
+  padding-bottom: 54px;
   align-items: center;
   display: flex;
   position: relative;
 
   @media screen and (min-width: 768px) {
     margin-left: 0px;
+    padding-bottom: 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 41px;
   }
 }
 
