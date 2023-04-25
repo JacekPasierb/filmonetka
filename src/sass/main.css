@@ -864,6 +864,8 @@ modal__loader {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   position: relative;
+  overflow: auto;
+  max-height: 90vh;
 }
 @media screen and (min-width: 320px) {
   .modal__box {
@@ -919,32 +921,29 @@ modal__loader {
 }
 .modal__details {
   display: flex;
-  gap: 30px;
-  margin-bottom: 20px;
+  gap: 15px;
+  margin-bottom: 5px;
 }
-@media screen and (min-width: 768px) {
-  .modal__details {
-    gap: 40px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .modal__details {
-    gap: 60px;
-  }
+.modal__values {
+  padding-bottom: 20px;
 }
 .modal__list {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 .modal__list-left {
   font-size: 12px;
-  line-height: 23px;
+  line-height: 20px;
   color: #8c8c8c;
+  width: 40%;
 }
 .modal__list-right {
   font-size: 12px;
-  line-height: 23px;
+  line-height: 20px;
   color: #000000;
+  width: 80%;
 }
 .modal__vote-details {
   color: #fff;
@@ -970,6 +969,7 @@ modal__loader {
   display: flex;
   align-items: center;
   text-transform: uppercase;
+  margin-bottom: 5px;
   color: #000000;
 }
 .modal__tittle-describe {
