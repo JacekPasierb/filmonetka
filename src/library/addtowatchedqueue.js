@@ -1,19 +1,19 @@
-import localStorage, { queue } from "./local-storage";
+import  { queue, watched, setWatchedLocalStorage, setQueueLocalStorage } from "./local-storage";
 
-const onAddToWatched = (id) => {
-	if (localStorage.watched.includes(id)) {
+const onAddToWatched = (movie,watchedButton) => {
+	if (watched.find(obj=>obj.id === movie.id)) {
 		return;
 	}
-	watched.pusch(id);
-	localStorage.setWatchedLocalStorage(watched);
+	watched.push(movie);
+	setWatchedLocalStorage(watched);
 };
 
-const onAddToQueue = (id) => {
-	if (localStorage.queue.includes(id)) {
+const onAddToQueue = (movie,queueButton) => {
+	if (queue.find(obj=>obj.id === movie.id)) {
 		return;
 	}
-	queue.push(id);
-	localStorage.setQueueLocalStorage(queue);
+	queue.push(movie);
+	setQueueLocalStorage(queue);
 };
 export {
     onAddToWatched,

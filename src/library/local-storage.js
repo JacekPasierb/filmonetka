@@ -1,7 +1,6 @@
 const KEY_WATCHED = "watched";
 const KEY_QUEUE = "queue";
-const watched = getWatchedLocalStorage() || [];
-const queue = getQueueLocalStorage() || [];
+
 
 const getWatchedLocalStorage = () => {
 	JSON.parse(localStorage.getItem(KEY_WATCHED));
@@ -10,7 +9,8 @@ const getWatchedLocalStorage = () => {
 const getQueueLocalStorage = () => {
 	JSON.parse(localStorage.getItem(KEY_QUEUE));
 }; // funkcja do ściągania filmów obejrzanych z local storage
-
+const watched = getWatchedLocalStorage() || [];
+const queue = getQueueLocalStorage() || [];
 const setWatchedLocalStorage = (arr) => {
 	localStorage.setItem(KEY_WATCHED, JSON.stringify(arr));
 }; // funckja do wrzucania filmów do local storage - do obejrzanych

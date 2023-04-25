@@ -1,6 +1,8 @@
 import axios from 'axios';
 import tools from './tools';
 import { BASE_URL, API_KEY } from './API_variables.js';
+import { queue, watched, setWatchedLocalStorage, getWatchedLocalStorage } from "../library/local-storage";
+import { onAddToWatched, onAddToQueue } from "../library/addtowatchedqueue";
 const GALLERYs = tools.qs('.Gallery');
 const GALLERYtrend = tools.qs('.movie-section__card');
 
@@ -24,16 +26,16 @@ const searchMovieById = async movieId => {
   try {
     const movie = await fetchMovie(movieId);
 
-    const movieName = movie.title;
-    const vote = movie.vote_average.toFixed(1);
-    const votes = movie.vote_count;
-    const popularity = movie.popularity.toFixed(1);
-    const originalTitle = movie.original_title;
-    const genres = movie.genres.map(ob => ob.name).join(', ');
-    const overview = movie.overview;
+				const movieName = movie.title;
+				const vote = movie.vote_average.toFixed(1);
+				const votes = movie.vote_count;
+				const popularity = movie.popularity.toFixed(1);
+				const originalTitle = movie.original_title;
+				const genres = movie.genres.map((ob) => ob.name).join(", ");
+				const overview = movie.overview;
 
-    const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-    mov.innerHTML = ` 
+				const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+				mov.innerHTML = ` 
 		<div class="box modal__row">
               <img class="modal__poster" src=${poster} alt="plakat filmu" sizes="(min-width: 1200px) 370px" />
 	          <div>
@@ -69,11 +71,32 @@ const searchMovieById = async movieId => {
 		              ${overview}
 		                  </p>
 		              <div class="modal__buttons">
-		             <button class="modal__button-watched">add to Watched</button>
-		              <button class="modal__button-queue">add to queue</button>
+		             <button class="modal__button-watched" id="watched">add to Watched</button>
+		              <button class="modal__button-queue" id="queue">add to queue</button>
 		                </div>
 		       </div>
 		</div>`;
+				const watchedButton = document.querySelector("#watched");
+				const queueButton = document.querySelector("#queue");
+        if (watched.find(obj=>obj.id == movie.id)) {
+		watchedButton.style.background = "green";
+    watchedButton.textContent = "DELETED TO WATCHED";
+		return;
+	}
+  watchedButton.addEventListener("click", (e) => {
+	e.preventDefault();
+	watchedButton.style.background = "green";
+  watchedButton.textContent = "DELETED TO WATCHED";
+	onAddToWatched(movie, watchedButton);
+  
+});
+ queueButton.addEventListener("click", (e) => {
+	e.preventDefault();
+	queueButton.style.background = "green";
+ queueButton.textContent = "DELETED TO QUEUE";
+	onAddToQueue(movie, queueButton);
+  
+});
   } catch (error) {
     console.log(error.message);
   }
