@@ -28,9 +28,10 @@ let totalPages = 100;
 const moviesGallery = document.querySelector('.movie-section__card');
 
 getTrendMovies(TREND_URL);
-showHideLoader(refs.loader);
+
 function getTrendMovies(url) {
   lastUrl = url;
+  showHideLoader(refs.loader);
   fetch(url)
     .then(res => res.json())
 
