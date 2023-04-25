@@ -486,7 +486,7 @@ body {
   .container-background {
     height: 216px;
     background-image: url("/src/images/liblary_desktop_1x.png");
-    padding: 40px 32px 0;
+    padding: 4px 32px 0;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
@@ -596,7 +596,8 @@ body {
   }
 }
 
-.button {
+.button,
+.button-library {
   width: 129.53;
   height: 44px;
   border: 1px solid var(--header_text);
@@ -609,19 +610,22 @@ body {
   background-color: transparent;
 }
 @media screen and (min-width: 768px) {
-  .button {
+  .button,
+  .button-library {
     width: 152px;
     height: 44px;
   }
 }
 @media screen and (min-width: 1280px) {
-  .button {
+  .button,
+  .button-library {
     width: 148px;
     height: 42px;
   }
 }
 
-.button:focus {
+.button,
+.button-library {
   background-color: var(--button_active);
   border-color: transparent;
 }
@@ -870,16 +874,20 @@ modal__loader {
 
 .movieInfo {
   padding-top: 10px;
-  padding-right: 10px;
+  padding-left: 4px;
+  padding-bottom: 5px;
   max-width: 350px;
 }
 @media screen and (min-width: 760px) {
   .movieInfo {
-    padding-top: 12px;
+    padding-top: 10px;
+    padding-left: 4px;
+    padding-bottom: 5px;
   }
 }
 @media screen and (min-width: 1200px) {
   .movieInfo {
+    max-width: 395px;
     padding-top: 20px;
   }
 }
@@ -910,7 +918,33 @@ modal__loader {
   transform: scale(0%);
 }
 
+<<<<<<< Updated upstream
 
+=======
+.button {
+  background: var(--header_text);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: var(--header_text);
+  padding: 9px 37px;
+  cursor: pointer;
+  border: 0px;
+  transition-duration: 250ms;
+  transition-property: background-color, color, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.button:focus, .button:hover {
+  background-color: var(--button_active);
+  color: var(--text_color_3);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+>>>>>>> Stashed changes
 
 .modal {
   position: fixed;

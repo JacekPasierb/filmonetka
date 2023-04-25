@@ -10,9 +10,8 @@ const containerBackground = document.querySelector('.container-background');
 
 const linkElement = document.querySelector('.header-library__image-link');
 const imgInnerHTML = `<a class="header-library__image-link" href="./index.html">
-<svg class="HeaderSvgFilm">
-          <use href="/src/images/symbol-defs.svg#icon-film"></use>
-        </svg>
+<img class = "header-library__image" src="/src/images/film.svg" alt="film icon">
+</img>
     <span class="header-library__image-span">Filmoteka</span>
     </a>`;
 containerBackground.insertAdjacentHTML('afterbegin', imgInnerHTML);
@@ -33,15 +32,15 @@ const navigationList = document.querySelector('.navigation');
 navigationList.insertAdjacentHTML('afterbegin', innerHTML);
 
 const ulButtons = document.createElement('ul');
-ulButtons.classList.add('buttons');
+ulButtons.classList.add('buttons-library');
 ulButtons.style = 'list-style:none';
 containerBackground.append(ulButtons);
 
 const secondInnerHTML = `<li class="buttons-list">
-<button class="button" type="button">watched</button>
+<button class="button-library" type="button">watched</button>
 </li>
 <li class="buttons-list">
-<button class="button" type="button">queue</button>
+<button class="button-library" type="button">queue</button>
 </li>`;
 const buttonLists = document.querySelector('.buttons');
 buttonLists.insertAdjacentHTML('afterbegin', secondInnerHTML);

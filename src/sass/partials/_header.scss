@@ -414,7 +414,7 @@
   @media screen and (min-width: 1280px) {
     height: 216px;
     background-image: url('/src/images/liblary_desktop_1x.png');
-    padding: 40px 32px 0;
+    padding: 4px 32px 0;
   }
 
   @media /* only for retina displays */ only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -509,7 +509,8 @@
   }
 }
 
-.button {
+.button,
+.button-library {
   width: 129.53;
   height: 44px;
   border: 1px solid var(--header_text);
@@ -531,7 +532,8 @@
     height: 42px;
   }
 }
-.button:focus {
+.button,
+.button-library {
   background-color: var(--button_active);
   border-color: transparent;
 }
