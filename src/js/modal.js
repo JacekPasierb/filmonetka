@@ -39,27 +39,30 @@ const searchMovieById = async movieId => {
 	          <div>
 		          <div class="modal__tittle-film">${movieName}
 				  </div>
-		          <div class="modal__details">
-		                  <div>
-		                      <ul class="modal__list modal__list-left">
-		                           <li>Vote&nbsp/&nbspVotes</li>
-		                           <li>Popularity</li>
-		                           <li>Original&nbspTitle</li>
-		                           <li>Genre</li>
-		                     </ul>
-		                 </div>
-		                 <div>
-		                      <ul class="modal__list modal__list-right">
-		                           <li>
-		                            <span class="modal__vote-details">${vote}</span>
+		          <div class="modal__values">
+		                 <ul class="modal__list">
+						 <li class="modal__details"> 
+						 <div class="modal__list-left">Vote&nbsp/&nbspVotes</div>
+						 <div class="modal__list-right">
+						            <span class="modal__vote-details">${vote}</span>
 									<span class="modal__list-left">/</span> 
 									<span class="modal__vote-summary">${votes}</span>
-		                          </li>
-		                          <li>${popularity}</li>
-		                          <li>${originalTitle}</li>
-		                           <li>${genres}</li>
-		                     </ul>
-		                 </div>
+						 </div>
+						 </li> 
+						 <li class="modal__details"> 
+						 <div class="modal__list-left">Popularity</div>
+						 <div class="modal__list-right">${popularity}</div>
+						 </li> 
+						 <li class="modal__details"> 
+						 <div class="modal__list-left">Original&nbspTitle</div>
+						 <div class="modal__list-right">${originalTitle}</div>
+						 </li> 
+						 <li class="modal__details"> 
+						 <div class="modal__list-left">Genre</div>
+						 <div class="modal__list-right">${genres}</div>
+						 </li> 
+						 </ul>
+		                 
 		          </div>
 		          <div class="modal__tittle-describe-tittle">About</div>
 		             <p class="modal__tittle-describe">
@@ -81,18 +84,18 @@ closeModalBtn.addEventListener('click', e => {
   toggleModal();
 });
 function closeByClick(event) {
-	if (event.target === modal) {
-		toggleModal();
-	}
+  if (event.target === modal) {
+    toggleModal();
+  }
 }
-modal.addEventListener("click", closeByClick);
+modal.addEventListener('click', closeByClick);
 
 function closeByPush(event) {
-	if (event.key === "Escape" || event.keyCode === 27) {
-		toggleModal();
-	}
+  if (event.key === 'Escape' || event.keyCode === 27) {
+    toggleModal();
+  }
 }
-window.addEventListener("keydown", closeByPush);
+window.addEventListener('keydown', closeByPush);
 GALLERYs.addEventListener('click', e => {
   const movieCard = e.target.closest('.MovieCard');
 
