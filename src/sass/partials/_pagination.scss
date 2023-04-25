@@ -22,6 +22,7 @@
     &:hover {
       background-color: #ff6b08;
       stroke: #fff;
+      fill: #fff;
     }
   }
 
@@ -62,15 +63,3 @@
     }
   }
 }
-
-//-- Czy te poniższe dwie klasy będa jeszcze potrzebne?
-
-// .page {
-// //   padding: 20px;
-//   cursor: pointer;
-// }
-
-// .disabled {
-//   cursor: not-allowed;
-//   background-color: grey;
-// }
