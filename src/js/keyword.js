@@ -286,7 +286,7 @@ function SearchByKeywordWrongName(e) {
 		prvprvSPage = currentSearchPage - 2;
 		nextSearchPage = currentSearchPage + 1;
 		prevSearchPage = currentSearchPage - 1;
-		totalPages = data.total_pages;
+		totalSearchPages = data.total_pages;
 
 		currentSearch.innerText = currentSearchPage;
 		nxtS.innerText = nxtSPage;
