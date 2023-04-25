@@ -84,8 +84,6 @@ body {
   background-image: url("/src/images/header_mobile_1x.png");
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 40px 20px 0;
-  margin-bottom: 20px;
 }
 @media screen and (min-device-pixel-ratio: 2) and (max-width: 767px), screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 767px), screen and (min-resolution: 192dpi) and (max-width: 767px), screen and (min-resolution: 2dppx) and (max-width: 767px) {
   .Header {
@@ -96,7 +94,6 @@ body {
   .Header {
     height: 216px;
     background-image: url("/src/images/header_tablet_1x.png");
-    padding: 40px 32px 0;
   }
 }
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px), screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 768px), screen and (min-resolution: 192dpi) and (min-width: 768px), screen and (min-resolution: 2dppx) and (min-width: 768px) {
@@ -108,7 +105,6 @@ body {
   .Header {
     height: 216px;
     background-image: url("/src/images/header_desktop_1x.png");
-    padding: 40px 32px 0;
   }
 }
 @media screen and (min-device-pixel-ratio: 2) and (min-width: 1280px), screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1280px), screen and (min-resolution: 192dpi) and (min-width: 1280px), screen and (min-resolution: 2dppx) and (min-width: 1280px) {
@@ -401,7 +397,7 @@ body {
     margin-top: 59px;
   }
   .Gallery li:nth-child(20) {
-    margin-bottom: 60px;
+    margin-bottom: 61px;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -413,6 +409,9 @@ body {
   }
   .Gallery li:nth-child(3) {
     margin-top: 60px;
+  }
+  .Gallery li:nth-child(20) {
+    margin-bottom: 60px;
   }
 }
 
@@ -852,14 +851,14 @@ modal__loader {
 
 .movie-section {
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   display: flex;
   justify-content: center;
 }
 @media screen and (min-width: 760px) {
   .movie-section {
     padding-top: 59px;
-    padding-bottom: 59px;
+    padding-bottom: 61px;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -1220,7 +1219,7 @@ modal__loader {
 
 .pagination {
   display: flex;
-  margin: 20px 30px 40px;
+  margin: 0px 30px 40px;
   align-items: center;
   justify-content: center;
   gap: 5px;
