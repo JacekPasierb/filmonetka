@@ -1,27 +1,41 @@
 // Header
 
 .Header {
-  display: flex;
-  display: block;
-  background-image: url(/src/images/tekstura_2.jpg);
+  height: 230px;
+  background-image: url('/src/images/header_mobile_1x.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  height: 230px;
+  padding: 40px 20px 0;
+  margin-bottom: 20px;
+
+  @media screen and (min-device-pixel-ratio: 2) and (max-width: 767px),
+    screen and (min-resolution: 192dpi) and (max-width: 767px),
+    screen and (min-resolution: 2dppx) and (max-width: 767px) {
+    background-image: url('/src/images/header_mobile_2x.png');
+  }
 
   @media screen and (min-width: 768px) {
     height: 216px;
+    background-image: url('/src/images/header_tablet_1x.png');
+    padding: 40px 32px 0;
   }
 
-  @media screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
-    screen and (min-resolution: 2dppx) {
-    background-image: url('/src/images/tekstura_2@2x.jpg');
+  @media screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+    screen and (min-resolution: 192dpi) and (min-width: 768px),
+    screen and (min-resolution: 2dppx) and (min-width: 768px) {
+    background-image: url('/src/images/header_tablet_2x.png');
   }
-  @media screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
-    screen and (min-resolution: 2dppx) {
-    background-image: url('/src/images/tekstura_2@3x.jpg');
+
+  @media screen and (min-width: 1280px) {
+    height: 216px;
+    background-image: url('/src/images/header_desktop_1x.png');
+    padding: 40px 32px 0;
+  }
+
+  @media screen and (min-device-pixel-ratio: 2) and (min-width: 1280px),
+    screen and (min-resolution: 192dpi) and (min-width: 1280px),
+    screen and (min-resolution: 2dppx) and (min-width: 1280px) {
+    background-image: url('/src/images/header_desktop_2x.png');
   }
 }
 
@@ -420,49 +434,6 @@
   color: var(--header_text);
 }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding-top: 63px;
-  padding-bottom: 62px;
-  @media screen and (min-width: 768px) {
-    padding-top: 40px;
-    gap: 32px;
-  }
-  @media screen and (min-width: 1280px) {
-    padding-top: 44px;
-    gap: 16px;
-  }
-}
-
-.button {
-  width: 129.53;
-  height: 44px;
-  border: 1px solid;
-  outline-color: var(--header_text);
-  border-color: var(--header_text);
-  border-radius: 5px;
-  font-weight: 500;
-  font-size: 12px;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--header_text);
-  background-color: transparent;
-  @media screen and (min-width: 768px) {
-    width: 152px;
-    height: 44px;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 148px;
-    height: 42px;
-  }
-}
-.button:focus {
-  background-color: var(--button_active);
-  border-color: transparent;
-}
-
 #searchPagination {
-  display:none
+  display: none;
 }
