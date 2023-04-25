@@ -176,4 +176,5 @@ function pageCall(page) {
     let url = urlSplit[0] + '?' + b;
     getTrendMovies(url);
   }
+  document.body.scrollTop = document.documentElement.scrollTo({top: 0, behavior: 'smooth'})
 }
