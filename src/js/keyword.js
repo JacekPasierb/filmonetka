@@ -263,6 +263,8 @@ function SearchByKeywordWrongName(e) {
 			REFS.FORM_NOTIFY.classList.add("IsHidden");
 		}, 10000);
 		REFS.FORM_NOTIFY.classList.remove("IsHidden");
+		document.getElementById("searchPagination").style.display = "none";
+		document.getElementById("gallery-main").style.display = "none";
 		REFS.FORM_NOTIFY.textContent =
 			"Search result not successful. Enter the correct movie name";
 		return;
@@ -273,12 +275,15 @@ function SearchByKeywordWrongName(e) {
 			setTimeout(() => {
 				REFS.FORM_NOTIFY.classList.add("IsHidden");
 			}, 10000);
+			document.getElementById("searchPagination").style.display = "none";
+			document.getElementById("gallery-main").style.display = "none";
 			REFS.FORM_NOTIFY.classList.remove("IsHidden");
 			REFS.FORM_NOTIFY.textContent =
 				"Search result not successful. Enter the correct movie name";
 			return;
 		}
 		REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
+		document.getElementById("gallery-main").style.display = "flex";
 		currentSearchPage = page;
 		nxtSPage = currentSearchPage + 1;
 		nxtnxtSPage = currentSearchPage + 2;
