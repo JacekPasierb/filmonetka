@@ -1,5 +1,5 @@
 import Genres from "./genres.js";
-import { API_KEY, BASE_URL, TREND_URL } from "./API_variables.js";
+import { API_KEY, BASE_URL, TREND_URL } from "./api_variables.js";
 import { showHideLoader } from "./loader";
 import refs from "./refs";
 import { qs } from "./tools";

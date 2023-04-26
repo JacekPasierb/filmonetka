@@ -1,4 +1,4 @@
-import { API_KEY, BASE_URL, ID_URL } from "../js/API_variables";
+import { API_KEY, BASE_URL, ID_URL } from "../js/api_variables";
 const data = [];
 
 const getWatchedMovie = async (movies, page = 1) => {
