@@ -1,18 +1,16 @@
-import Genres from './genres.js';
-import { API_KEY, BASE_URL, TREND_URL } from './API_variables.js';
-import { showHideLoader } from './loader';
-import refs from './refs';
+import Genres from "./genres.js";
+import { API_KEY, BASE_URL, TREND_URL } from "./API_variables.js";
+import { showHideLoader } from "./loader";
+import refs from "./refs";
 import { qs } from "./tools";
 
-
-
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-const current = document.getElementById('current');
-const prv = document.getElementById('prv');
-const prvprv = document.getElementById('prvprv');
-const nxt = document.getElementById('nxt');
-const nxtnxt = document.getElementById('nxtnxt');
+const prev = document.getElementById("prev");
+const next = document.getElementById("next");
+const current = document.getElementById("current");
+const prv = document.getElementById("prv");
+const prvprv = document.getElementById("prvprv");
+const nxt = document.getElementById("nxt");
+const nxtnxt = document.getElementById("nxtnxt");
 
 let currentPage = 1;
 let nextPage = 2;
@@ -21,10 +19,10 @@ let nxtnxtPage = 3;
 let prvPage = 1;
 let prvprvPage = 1;
 let prevPage = 1;
-let lastUrl = '';
+let lastUrl = "";
 let totalPages = 100;
 
-const moviesGallery = qs('.movie-section__card');
+const moviesGallery = qs(".movie-section__card");
 const getTrendMovies = (url) => {
 	lastUrl = url;
 	showHideLoader(refs.loader);
@@ -83,34 +81,39 @@ const getTrendMovies = (url) => {
 };
 getTrendMovies(TREND_URL);
 
-
-
 const renderMovies = (data) => {
-  moviesGallery.innerHTML = '';
+	moviesGallery.innerHTML = "";
 
-  data.forEach(markup => {
-    const { title, name, release_date, first_air_date, poster_path, genre_ids } = markup;
-    const moviePoster = `https://image.tmdb.org/t/p/w500/${poster_path}`;
-    const movieDate = release_date ? release_date.slice(0, 4) : first_air_date;
-    const movieName = title ? title : name;
-    let matchedGenres = genre_ids
-      .map(id => {
-        const genre = Genres.movieGenres.find(genre => genre.id === id);
-        return genre ? [`${genre.name}`] : '';
-      })
-      .filter(Boolean);
+	data.forEach((markup) => {
+		const {
+			title,
+			name,
+			release_date,
+			first_air_date,
+			poster_path,
+			genre_ids,
+		} = markup;
+		const moviePoster = `https://image.tmdb.org/t/p/w500/${poster_path}`;
+		const movieDate = release_date ? release_date.slice(0, 4) : first_air_date;
+		const movieName = title ? title : name;
+		let matchedGenres = genre_ids
+			.map((id) => {
+				const genre = Genres.movieGenres.find((genre) => genre.id === id);
+				return genre ? [`${genre.name}`] : "";
+			})
+			.filter(Boolean);
 
-    // Wyświetlane są gatunki filmowe
-    if (matchedGenres.length > 2) {
-      matchedGenres = matchedGenres.slice(0, 3).join(', ');
-    } else {
-      matchedGenres = matchedGenres.join(', ');
-    }
-    const markupEl = document.createElement('li');
-    markupEl.classList.add('movie-container__card');
+		// Wyświetlane są gatunki filmowe
+		if (matchedGenres.length > 2) {
+			matchedGenres = matchedGenres.slice(0, 3).join(", ");
+		} else {
+			matchedGenres = matchedGenres.join(", ");
+		}
+		const markupEl = document.createElement("li");
+		markupEl.classList.add("movie-container__card");
 
-    markupEl.setAttribute('data-id', `${markup.id}`);
-    markupEl.innerHTML = `
+		markupEl.setAttribute("data-id", `${markup.id}`);
+		markupEl.innerHTML = `
 
     <div class="poster"><img class="poster__img" src="${moviePoster}" alt="${title} poster" loading="lazy" /></div>
     <div class="movieInfo">
@@ -120,60 +123,62 @@ const renderMovies = (data) => {
       </p>
     </div>
     `;
-    moviesGallery.appendChild(markupEl);
-  });
-}
+		moviesGallery.appendChild(markupEl);
+	});
+};
 
-prev.addEventListener('click', () => {
-  if (prevPage > 0) {
-    pageCall(prevPage);
-  }
+prev.addEventListener("click", () => {
+	if (prevPage > 0) {
+		pageCall(prevPage);
+	}
 });
-prv.addEventListener('click', () => {
-  if (prvPage > 0) {
-    pageCall(prvPage);
-  }
+prv.addEventListener("click", () => {
+	if (prvPage > 0) {
+		pageCall(prvPage);
+	}
 });
-prvprv.addEventListener('click', () => {
-  if (prvprvPage > 0) {
-    pageCall(prvprvPage);
-  }
-});
-
-next.addEventListener('click', () => {
-  if (nextPage <= totalPages) {
-    pageCall(nextPage);
-  }
-});
-nxt.addEventListener('click', () => {
-  if (nxtPage <= totalPages) {
-    pageCall(nxtPage);
-  }
-});
-nxtnxt.addEventListener('click', () => {
-  if (nxtnxtPage <= totalPages) {
-    pageCall(nxtnxtPage);
-  }
+prvprv.addEventListener("click", () => {
+	if (prvprvPage > 0) {
+		pageCall(prvprvPage);
+	}
 });
 
-const  pageCall = (page) =>{
-  let urlSplit = lastUrl.split('?');
-  
-  let queryParams = urlSplit[1].split('&');
+next.addEventListener("click", () => {
+	if (nextPage <= totalPages) {
+		pageCall(nextPage);
+	}
+});
+nxt.addEventListener("click", () => {
+	if (nxtPage <= totalPages) {
+		pageCall(nxtPage);
+	}
+});
+nxtnxt.addEventListener("click", () => {
+	if (nxtnxtPage <= totalPages) {
+		pageCall(nxtnxtPage);
+	}
+});
 
- 
-  let key = queryParams[queryParams.length - 1].split('=');
+const pageCall = (page) => {
+	const urlSplit = lastUrl.split("?");
 
-  if (key[0] != 'page') {
-    let url = lastUrl + '&page=' + page;
-    getTrendMovies(url);
-  } else {
-    key[1] = page.toString();
-    let a = key.join('=');
-    queryParams[queryParams.length - 1] = a;
-    let b = queryParams.join('&');
-    let url = urlSplit[0] + '?' + b;
-    getTrendMovies(url);
-  }
-  document.body.scrollTop = document.documentElement.scrollTo({top: 0, behavior: 'smooth'})
-}
+	const queryParams = urlSplit[1].split("&");
+
+	const key = queryParams[queryParams.length - 1].split("=");
+
+	if (key[0] !== "page") {
+		const url = lastUrl + "&page=" + page;
+		getTrendMovies(url);
+	} else {
+		key[1] = page.toString();
+		const a = key.join("=");
+		queryParams[queryParams.length - 1] = a;
+		const b = queryParams.join("&");
+		const url = urlSplit[0] + "?" + b;
+		getTrendMovies(url);
+	}
+	document.body.scrollTop = document.documentElement.scrollTo({
+		top: 0,
+		behavior: "smooth",
+	});
+};
