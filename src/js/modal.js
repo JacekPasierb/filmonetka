@@ -1,14 +1,14 @@
 import axios from 'axios';
-import tools from './tools';
+import {qs} from './tools';
 import { BASE_URL, API_KEY } from './API_variables.js';
 import { queue, watched, setWatchedLocalStorage, getWatchedLocalStorage } from "../library/local-storage";
 import { onAddToWatched, onAddToQueue } from "../library/addtowatchedqueue";
-const GALLERYs = tools.qs('.Gallery');
-const GALLERYtrend = tools.qs('.movie-section__card');
+const GALLERYs = qs('.Gallery');
+const GALLERYtrend = qs('.movie-section__card');
 
-const modal = document.querySelector('[data-modal]');
-const closeModalBtn = document.querySelector('[data-modal-close]');
-const mov = tools.qs('.mov');
+const modal = qs('[data-modal]');
+const closeModalBtn = qs('[data-modal-close]');
+const mov = qs('.mov');
 
 const toggleModal=() =>modal.classList.toggle('is-hidden');
 
@@ -75,8 +75,8 @@ const searchMovieById = async movieId => {
 		                </div>
 		       </div>
 		</div>`;
-				const watchedButton = document.querySelector("#watched");
-				const queueButton = document.querySelector("#queue");
+				const watchedButton = qs("#watched");
+				const queueButton = qs("#queue");
         if (watched.find(obj=>obj.id == movie.id)) {
 		watchedButton.style.background = "green";
     watchedButton.textContent = "DELETED FROM WATCHED";

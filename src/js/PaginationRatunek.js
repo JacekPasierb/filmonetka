@@ -2,6 +2,7 @@ import Genres from './genres.js';
 import { API_KEY, BASE_URL, TREND_URL } from './API_variables.js';
 import { showHideLoader } from './loader';
 import refs from './refs';
+import { qs } from "./tools";
 
 
 
@@ -23,7 +24,7 @@ let prevPage = 1;
 let lastUrl = '';
 let totalPages = 100;
 
-const moviesGallery = document.querySelector('.movie-section__card');
+const moviesGallery = qs('.movie-section__card');
 const getTrendMovies = (url) => {
 	lastUrl = url;
 	showHideLoader(refs.loader);

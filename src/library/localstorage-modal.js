@@ -3,10 +3,10 @@ import {onAddToWatched, onAddToQueue} from "./addtowatchedqueue"
 
 import { createLibraryMarkup } from "./library-markup";
 import { queue, setQueueLocalStorage, setWatchedLocalStorage, watched } from "./local-storage";
-
-const addWatched = document.querySelector(".modal__button-watched");
-const addQueue = document.querySelector(".modal__button-queue");
-const watchedMovies = document.querySelector(".watched-movies");
+import { qs } from "./tools";
+const addWatched = qs(".modal__button-watched");
+const addQueue = qs(".modal__button-queue");
+const watchedMovies = qs(".watched-movies");
 
 //----------------------------------------------------------------------------------------//
 //--------------------------------- MOŻE ZOSTAĆ WDROŻONE W UPDATE ------------------------//

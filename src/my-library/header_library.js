@@ -1,6 +1,7 @@
 import { showWatched, showQueue } from '../library/add-localstorage';
 import { getWatchedLocalStorage, queue, watched } from '../library/local-storage';
-const body = document.querySelector('body');
+import { qs } from "./tools";
+const body = qs('body');
 const headerElement = document.createElement('header');
 headerElement.classList.add('header-library');
 body.prepend(headerElement);
@@ -8,9 +9,9 @@ body.prepend(headerElement);
 const divBackground = document.createElement('div');
 divBackground.classList.add('container-background');
 headerElement.prepend(divBackground);
-const containerBackground = document.querySelector('.container-background');
+const containerBackground = qs('.container-background');
 
-const linkElement = document.querySelector('.header-library__image-link');
+const linkElement = qs('.header-library__image-link');
 const imgInnerHTML = `<a class="header-library__image-link" href="./index.html">
 <svg class="HeaderSvgFilm">
           <use href="/src/images/symbol-defs.svg#icon-film"></use>
@@ -31,7 +32,7 @@ const innerHTML = `<li class="navigation-list">
 <a class="navigation-list__link--active" href="my-library.html">my library</a>
 </li>`;
 
-const navigationList = document.querySelector('.navigation');
+const navigationList = qs('.navigation');
 navigationList.insertAdjacentHTML('afterbegin', innerHTML);
 
 const ulButtons = document.createElement('ul');
@@ -45,17 +46,17 @@ const secondInnerHTML = `<li class="buttons-list">
 <li class="buttons-list">
 <button class="button-library" type="button" id="btnQueueGallery">queue</button>
 </li>`;
-const buttonLists = document.querySelector('.buttons');
+const buttonLists = qs('.buttons');
 buttonLists.insertAdjacentHTML('afterbegin', secondInnerHTML);
 
-let activeBtn = document.querySelector('.button-library');
+let activeBtn = qs('.button-library');
 activeBtn.addEventListener('click', () => {
   activeBtn.classList.add('active');
   activeBtn.classList.remove('active');
 });
 
-const btnWatchedGallery = document.querySelector('#btnWatchedGallery');
-const btnQueueGallery = document.querySelector('#btnQueueGallery');
+const btnWatchedGallery = qs('#btnWatchedGallery');
+const btnQueueGallery = qs('#btnQueueGallery');
 btnWatchedGallery.addEventListener('click', e => {
   e.preventDefault();
 
