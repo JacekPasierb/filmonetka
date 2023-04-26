@@ -1,6 +1,6 @@
 import axios from "axios";
 import { qs } from "./tools";
-import { BASE_URL, API_KEY } from "./api_variables.js";
+import { BASE_URL, API_KEY } from "./api_variables";
 import { queue, watched } from "../library/local-storage";
 import { onAddToWatched, onAddToQueue } from "../library/add_to_watched_queue";
 const GALLERYs = qs(".Gallery");
