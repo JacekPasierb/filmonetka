@@ -34,11 +34,11 @@ next.addEventListener('click', () => {
 const pageCall = (page) =>{
 
   let urlSplit = lastUrl.split('?');
-  console.log(urlSplit);
+  
   let queryParams = urlSplit[1].split('&');
-  console.log(queryParams);
+  
   let key = queryParams[queryParams.length -1].split('=');
-  console.log(key);
+ 
   if(key[0] != 'page'){
     let url = lastUrl + '&page='+page
     getTrendMovies(url)
