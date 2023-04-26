@@ -1,5 +1,5 @@
-import { showWatched, showQueue } from "../library/add-localstorage";
-import { getWatchedLocalStorage, queue, watched } from "../library/local-storage";
+import { showWatched, showQueue } from '../library/add-localstorage';
+import { getWatchedLocalStorage, queue, watched } from '../library/local-storage';
 const body = document.querySelector('body');
 const headerElement = document.createElement('header');
 headerElement.classList.add('header-library');
@@ -12,8 +12,9 @@ const containerBackground = document.querySelector('.container-background');
 
 const linkElement = document.querySelector('.header-library__image-link');
 const imgInnerHTML = `<a class="header-library__image-link" href="./index.html">
-<img class = "header-library__image" src = "src/images/film_icon.png">
-</img>
+<svg class="HeaderSvgFilm">
+          <use href="/src/images/symbol-defs.svg#icon-film"></use>
+        </svg>
     <span class="header-library__image-span">Filmoteka</span>
     </a>`;
 containerBackground.insertAdjacentHTML('afterbegin', imgInnerHTML);
@@ -24,10 +25,10 @@ ulElement.style = 'list-style:none';
 containerBackground.append(ulElement);
 
 const innerHTML = `<li class="navigation-list">
-<a class="navigation-list__link">home</a>
+<a class="navigation-list__link" href="index.html">home</a>
 </li>
 <li class="navigation-list">
-<a class="navigation-list__link--active">my library</a>
+<a class="navigation-list__link--active" href="my-library.html">my library</a>
 </li>`;
 
 const navigationList = document.querySelector('.navigation');
@@ -39,7 +40,7 @@ ulButtons.style = 'list-style:none';
 containerBackground.append(ulButtons);
 
 const secondInnerHTML = `<li class="buttons-list">
-<button class="button-library--active" type="button" id="btnWatchedGallery">watched</button>
+<button class="button-library active" type="button" id="btnWatchedGallery">watched</button>
 </li>
 <li class="buttons-list">
 <button class="button-library" type="button" id="btnQueueGallery">queue</button>
@@ -47,16 +48,21 @@ const secondInnerHTML = `<li class="buttons-list">
 const buttonLists = document.querySelector('.buttons');
 buttonLists.insertAdjacentHTML('afterbegin', secondInnerHTML);
 
-const btnWatchedGallery = document.querySelector("#btnWatchedGallery");
-const btnQueueGallery = document.querySelector("#btnQueueGallery");
-btnWatchedGallery.addEventListener('click', (e) =>{
-    e.preventDefault();
-   
-   
-showWatched(btnWatchedGallery,btnQueueGallery);
+let activeBtn = document.querySelector('.button-library');
+activeBtn.addEventListener('click', () => {
+  activeBtn.classList.add('active');
+  activeBtn.classList.remove('active');
 });
-btnQueueGallery.addEventListener("click", (e) => {
-	e.preventDefault();
 
-	showQueue(btnQueueGallery, btnWatchedGallery);
+const btnWatchedGallery = document.querySelector('#btnWatchedGallery');
+const btnQueueGallery = document.querySelector('#btnQueueGallery');
+btnWatchedGallery.addEventListener('click', e => {
+  e.preventDefault();
+
+  showWatched(btnWatchedGallery, btnQueueGallery);
+});
+btnQueueGallery.addEventListener('click', e => {
+  e.preventDefault();
+
+  showQueue(btnQueueGallery, btnWatchedGallery);
 });
