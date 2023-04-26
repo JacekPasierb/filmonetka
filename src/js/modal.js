@@ -10,9 +10,8 @@ const modal = document.querySelector('[data-modal]');
 const closeModalBtn = document.querySelector('[data-modal-close]');
 const mov = tools.qs('.mov');
 
-function toggleModal() {
-  modal.classList.toggle('is-hidden');
-}
+const toggleModal=() =>modal.classList.toggle('is-hidden');
+
 const fetchMovie = async movieId => {
   const response = await axios.get(
     `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`,
@@ -111,14 +110,14 @@ closeModalBtn.addEventListener('click', e => {
   e.preventDefault();
   toggleModal();
 });
-function closeByClick(event) {
+const closeByClick = (event)=> {
   if (event.target === modal) {
     toggleModal();
   }
 }
 modal.addEventListener('click', closeByClick);
 
-function closeByPush(event) {
+const closeByPush = (event) => {
   if (event.key === 'Escape' || event.keyCode === 27) {
     toggleModal();
   }

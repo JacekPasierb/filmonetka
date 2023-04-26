@@ -1,4 +1,4 @@
-export function showHideLoader(element) {
+export const showHideLoader = (element) =>{
   if (element.style.display === 'block') {
     element.style.display = 'none';
   } else {

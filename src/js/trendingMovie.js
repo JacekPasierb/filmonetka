@@ -16,7 +16,7 @@ let totalPages = 100;
 
 getTrendMovies(TREND_URL);
 
-export function getTrendMovies(url) {
+export const getTrendMovies = (url) => {
   lastUrl = url
       fetch(url).then(res => res.json()).then(data => {
 console.log(data)
@@ -43,21 +43,5 @@ console.log(data)
   })
 }
 
-
-// ORYGINALNY KOD GABRIELA
-// const getTrendingMovies = async (page = 1) => {
-//   try {
-//     const resp = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
-
-//     if (!resp.ok) throw new Error(resp.status);
-
-//     return await resp.json();
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
-// const Trending = { getTrendingMovies };
-
-// export default Trending;
 
 

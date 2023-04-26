@@ -3,9 +3,7 @@ import { API_KEY, BASE_URL, TREND_URL } from './API_variables.js';
 import { showHideLoader } from './loader';
 import refs from './refs';
 
-// import { renderMovies } from "./renderMovieCards";
-// import { getTrendMovies } from './trendingMovie.js';
-// import { currentPage } from "./trendingMovie.js"
+
 
 const prev = document.getElementById('prev');
 const next = document.getElementById('next');
@@ -26,67 +24,67 @@ let lastUrl = '';
 let totalPages = 100;
 
 const moviesGallery = document.querySelector('.movie-section__card');
+const getTrendMovies = (url) => {
+	lastUrl = url;
+	showHideLoader(refs.loader);
+	fetch(url)
+		.then((res) => res.json())
 
+		.then((data) => {
+			showHideLoader(refs.loader);
+			if (data.results.length !== 0) {
+				renderMovies(data.results);
+				currentPage = data.page;
+				nextPage = currentPage + 1;
+				nxtPage = currentPage + 1;
+				nxtnxtPage = currentPage + 2;
+				prevPage = currentPage - 1;
+				prvPage = currentPage - 1;
+				prvprvPage = currentPage - 2;
+				totalPages = data.total_pages;
+
+				current.innerText = currentPage;
+				nxt.innerText = nxtPage;
+				nxtnxt.innerText = nxtnxtPage;
+				prv.innerText = prvPage;
+				prvprv.innerText = prvprvPage;
+
+				if (currentPage <= 2) {
+					prvprv.style.display = "none";
+					prvprv.innerText = 1;
+				} else {
+					prvprv.style.display = "flex";
+				}
+				if (currentPage + 1 >= totalPages) {
+					nxtnxt.style.display = "none";
+					nxtnxt.innerText = totalPages;
+				} else {
+					nxtnxt.style.display = "flex";
+				}
+
+				if (currentPage <= 1) {
+					prev.classList.add("disabled");
+					next.classList.remove("disabled");
+					prv.style.display = "none";
+					prv.innerText = 1;
+				} else if (currentPage >= totalPages) {
+					prev.classList.remove("disabled");
+					next.classList.add("disabled");
+					nxt.style.display = "none";
+				} else {
+					prev.classList.remove("disabled");
+					next.classList.remove("disabled");
+					prv.style.display = "flex";
+					nxt.style.display = "flex";
+				}
+			}
+		});
+};
 getTrendMovies(TREND_URL);
 
-function getTrendMovies(url) {
-  lastUrl = url;
-  showHideLoader(refs.loader);
-  fetch(url)
-    .then(res => res.json())
 
-    .then(data => {
-      showHideLoader(refs.loader);
-      if (data.results.length !== 0) {
-        renderMovies(data.results);
-        currentPage = data.page;
-        nextPage = currentPage + 1;
-        nxtPage = currentPage + 1;
-        nxtnxtPage = currentPage + 2;
-        prevPage = currentPage - 1;
-        prvPage = currentPage - 1;
-        prvprvPage = currentPage - 2;
-        totalPages = data.total_pages;
 
-        current.innerText = currentPage;
-        nxt.innerText = nxtPage;
-        nxtnxt.innerText = nxtnxtPage;
-        prv.innerText = prvPage;
-        prvprv.innerText = prvprvPage;
-
-        if (currentPage <= 2) {
-          prvprv.style.display = 'none';
-          prvprv.innerText = 1;
-        } else {
-          prvprv.style.display = 'flex';
-        }
-        if (currentPage + 1 >= totalPages) {
-          nxtnxt.style.display = 'none';
-          nxtnxt.innerText = totalPages;
-        } else {
-          nxtnxt.style.display = 'flex';
-        }
-
-        if (currentPage <= 1) {
-          prev.classList.add('disabled');
-          next.classList.remove('disabled');
-          prv.style.display = 'none';
-          prv.innerText = 1;
-        } else if (currentPage >= totalPages) {
-          prev.classList.remove('disabled');
-          next.classList.add('disabled');
-          nxt.style.display = 'none';
-        } else {
-          prev.classList.remove('disabled');
-          next.classList.remove('disabled');
-          prv.style.display = 'flex';
-          nxt.style.display = 'flex';
-        }
-      }
-    });
-}
-
-function renderMovies(data) {
+const renderMovies = (data) => {
   moviesGallery.innerHTML = '';
 
   data.forEach(markup => {
@@ -157,7 +155,7 @@ nxtnxt.addEventListener('click', () => {
   }
 });
 
-function pageCall(page) {
+const  pageCall = (page) =>{
   let urlSplit = lastUrl.split('?');
   // console.log(urlSplit);
   let queryParams = urlSplit[1].split('&');
