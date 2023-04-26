@@ -3,8 +3,8 @@ import { qs } from "./tools";
 import { BASE_URL, API_KEY } from "./api_variables";
 import { queue, watched } from "../library/local-storage";
 import { onAddToWatched, onAddToQueue } from "../library/add_to_watched_queue";
-const GALLERYs = qs(".Gallery");
-const GALLERYtrend = qs(".movie-section__card");
+const gallerysDom = qs(".Gallery");
+const galleryTrendDom = qs(".movie-section__card");
 
 const modal = qs("[data-modal]");
 const closeModalBtn = qs("[data-modal-close]");
@@ -121,7 +121,7 @@ const closeByPush = (event) => {
 	}
 };
 window.addEventListener("keydown", closeByPush);
-GALLERYs.addEventListener("click", (e) => {
+gallerysDom.addEventListener("click", (e) => {
 	const movieCard = e.target.closest(".MovieCard");
 
 	if (movieCard) {
@@ -133,7 +133,7 @@ GALLERYs.addEventListener("click", (e) => {
 	}
 });
 
-GALLERYtrend.addEventListener("click", (e) => {
+galleryTrendDom.addEventListener("click", (e) => {
 	const movieCard = e.target.closest(".movie-container__card");
 
 	if (movieCard) {
