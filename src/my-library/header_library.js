@@ -40,7 +40,7 @@ ulButtons.style = "list-style:none";
 containerBackground.append(ulButtons);
 
 const secondInnerHTML = `<li class="buttons-list">
-<button class="button-library active" type="button" id="btnWatchedGallery">watched</button>
+<button class="button-library" type="button" id="btnWatchedGallery">watched</button>
 </li>
 <li class="buttons-list">
 <button class="button-library" type="button" id="btnQueueGallery">queue</button>
