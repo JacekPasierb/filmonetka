@@ -3,11 +3,11 @@ const KEY_QUEUE = "queue";
 
 
 const getWatchedLocalStorage = () => {
-	JSON.parse(localStorage.getItem(KEY_WATCHED));
+	return JSON.parse(localStorage.getItem(KEY_WATCHED));
 }; // funkcja do ściągania fimów do kolejki local storage
 
 const getQueueLocalStorage = () => {
-	JSON.parse(localStorage.getItem(KEY_QUEUE));
+	return JSON.parse(localStorage.getItem(KEY_QUEUE));
 }; // funkcja do ściągania filmów obejrzanych z local storage
 const watched = getWatchedLocalStorage() || [];
 const queue = getQueueLocalStorage() || [];
