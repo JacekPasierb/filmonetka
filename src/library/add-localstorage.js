@@ -10,12 +10,12 @@ const showWatched=(btnWatchedGallery,btnQueueGallery) =>{
         btnQueueGallery.classList.remove('button--active');
         btnQueueGallery.disabled = false;
     }
-console.log('po',watched);
+
     if(!watched.length) {
         watchedMovies.innerHTML = '';
         return;
     }
-   console.log('p',watchedMovies);
+  
         watchedMovies.innerHTML = createLibraryMarkupW(watched);
    
 }

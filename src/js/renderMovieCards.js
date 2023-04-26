@@ -1,9 +1,6 @@
-// Próba przeniesienia w pełni działajacego kodu aby struktura była rozbita tak jak u Gabriela
-// ale paginacja nie działa w 100%
-// import Trending from './trendingMovie.js';
 import Genres from './genres.js';
-
-const moviesGallery = document.querySelector('.movie-section__card');
+import {qs} from './tools';
+const moviesGallery = qs('.movie-section__card');
 // Tworzenie galerii popularnych filmów
 
 export const renderMovies = (data) =>{

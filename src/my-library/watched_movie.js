@@ -10,6 +10,6 @@ const getWatchedMovie = async (movies, page = 1) => {
     catch (error) {
         console.log(error.message);
 }
-console.log(data)
+
 }
 

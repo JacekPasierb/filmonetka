@@ -1,5 +1,7 @@
+import { qs } from "./tools";
+
 const refs = {
-  loader: document.querySelector('.loader'),
-  loaderModal: document.querySelector('.modal__loader'),
+  loader: qs('.loader'),
+  loaderModal: qs('.modal__loader'),
 };
 export default refs;

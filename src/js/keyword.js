@@ -1,13 +1,13 @@
 import axios from "axios";
-import tools from "./tools";
+import { qs } from "./tools";
 
 const API_URL = "https://api.themoviedb.org/3";
 const API_KEY = "8c57aa16de6d4d7f2d4ddf4e537ebfb8";
 
 const REFS = {
-	FORM: tools.qs(".HeaderInput"),
-	FORM_NOTIFY: tools.qs(".HeaderInputNotify"),
-	GALLERY: tools.qs(".Gallery"),
+	FORM: qs(".HeaderInput"),
+	FORM_NOTIFY: qs(".HeaderInputNotify"),
+	GALLERY: qs(".Gallery"),
 };
 
 const prevSearch = document.getElementById('prevSearch')

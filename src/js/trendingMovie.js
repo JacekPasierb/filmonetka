@@ -1,8 +1,7 @@
 import { API_KEY, BASE_URL, TREND_URL } from './API_variables.js';
 import { renderMovies } from './renderMovieCards.js';
 
-// Próba przeniesienia w pełni działajacego kodu aby struktura była rozbita tak jak u Gabriela
-// ale paginacja nie działa w 100%
+
 
 const prev = document.getElementById('prev')
 const next = document.getElementById('next')

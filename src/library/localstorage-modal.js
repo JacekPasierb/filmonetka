@@ -1,16 +1,19 @@
 
 import {onAddToWatched, onAddToQueue} from "./addtowatchedqueue"
-
 import { createLibraryMarkup } from "./library-markup";
 import { queue, setQueueLocalStorage, setWatchedLocalStorage, watched } from "./local-storage";
+import { qs } from "../js/tools";
+const addWatched = qs(".modal__button-watched");
+const addQueue = qs(".modal__button-queue");
+const watchedMovies = qs(".watched-movies");
 
-const addWatched = document.querySelector(".modal__button-watched");
-const addQueue = document.querySelector(".modal__button-queue");
-const watchedMovies = document.querySelector(".watched-movies");
-console.log(watched);
+//----------------------------------------------------------------------------------------//
+//--------------------------------- MOŻE ZOSTAĆ WDROŻONE W UPDATE ------------------------//
+//----------------------------------------------------------------------------------------//
+
 // if(watched.includes(movie)) {
 //     addWatched.textContent = 'In watched';
-//     addWatched.stylebackgroundColor = "var(--button_active)"; 
+//     addWatched.stylebackgroundColor = "var(--button_active)";
 // }
 
 // if(queue.includes(movie)) {
@@ -18,7 +21,7 @@ console.log(watched);
 //     addQueue.style.backgroundColor = "var(--button_active)";
 // }
 // addWatched.addEventListener("click", () => {
-    
+
 //     if(watched.includes(id)){
 //         watched.splice(watched.indexOf(id), 1);
 //         setWatchedLocalStorage(watched)
@@ -40,7 +43,7 @@ console.log(watched);
 //     if (queue.includes(id)) {
 //         queue.splice(queue.indexOf(id), 1);
 //         setQueueLocalStorage(queue);
-       
+
 //         getArrayMovies(queue)
 //         .then(data => {
 //             if(watchedMovies) {
@@ -53,5 +56,7 @@ console.log(watched);
 //         setQueueLocalStorage(queue);
 //     }
 // })
-
-export {watchedMovies};
+//----------------------------------------------------------------------------------------//
+//--------------------------------- MOŻE ZOSTAĆ WDROŻONE W UPDATE ------------------------//
+//----------------------------------------------------------------------------------------//
+export { watchedMovies };

@@ -1,7 +1,4 @@
 
-import { API_KEY, BASE_URL, TREND_URL } from './API_variables.js';
-
-
 import { getTrendMovies } from './trendingMovie.js';
 import { lastUrl } from './trendingMovie.js';
 
@@ -34,11 +31,11 @@ next.addEventListener('click', () => {
 const pageCall = (page) =>{
 
   let urlSplit = lastUrl.split('?');
-  console.log(urlSplit);
+  
   let queryParams = urlSplit[1].split('&');
-  console.log(queryParams);
+  
   let key = queryParams[queryParams.length -1].split('=');
-  console.log(key);
+ 
   if(key[0] != 'page'){
     let url = lastUrl + '&page='+page
     getTrendMovies(url)

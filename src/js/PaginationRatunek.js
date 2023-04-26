@@ -2,6 +2,7 @@ import Genres from './genres.js';
 import { API_KEY, BASE_URL, TREND_URL } from './API_variables.js';
 import { showHideLoader } from './loader';
 import refs from './refs';
+import { qs } from "./tools";
 
 
 
@@ -23,7 +24,7 @@ let prevPage = 1;
 let lastUrl = '';
 let totalPages = 100;
 
-const moviesGallery = document.querySelector('.movie-section__card');
+const moviesGallery = qs('.movie-section__card');
 const getTrendMovies = (url) => {
 	lastUrl = url;
 	showHideLoader(refs.loader);
@@ -157,12 +158,12 @@ nxtnxt.addEventListener('click', () => {
 
 const  pageCall = (page) =>{
   let urlSplit = lastUrl.split('?');
-  // console.log(urlSplit);
+  
   let queryParams = urlSplit[1].split('&');
 
-  // console.log(queryParams);
+ 
   let key = queryParams[queryParams.length - 1].split('=');
-  // console.log(key);
+
   if (key[0] != 'page') {
     let url = lastUrl + '&page=' + page;
     getTrendMovies(url);
