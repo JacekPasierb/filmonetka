@@ -1,7 +1,4 @@
 
-import { API_KEY, BASE_URL, TREND_URL } from './API_variables.js';
-
-
 import { getTrendMovies } from './trendingMovie.js';
 import { lastUrl } from './trendingMovie.js';
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {qs} from './tools';
 import { BASE_URL, API_KEY } from './API_variables.js';
-import { queue, watched, setWatchedLocalStorage, getWatchedLocalStorage } from "../library/local-storage";
+import { queue, watched } from "../library/local-storage";
 import { onAddToWatched, onAddToQueue } from "../library/addtowatchedqueue";
 const GALLERYs = qs('.Gallery');
 const GALLERYtrend = qs('.movie-section__card');

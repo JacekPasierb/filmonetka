@@ -1,7 +1,7 @@
-import localStorage from "./local-storage";
-import { renderMovieCard } from "../js/renderMovieCards";
-import Trending from "../js/trendingMovie";
-import Genres from "../js/genres";
+
+
+
+
 import { qs } from "../js/tools";
 
 const markButton = qs(".button-mark");

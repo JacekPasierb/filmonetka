@@ -1,6 +1,5 @@
 
 import {onAddToWatched, onAddToQueue} from "./addtowatchedqueue"
-
 import { createLibraryMarkup } from "./library-markup";
 import { queue, setQueueLocalStorage, setWatchedLocalStorage, watched } from "./local-storage";
 import { qs } from "../js/tools";
