@@ -27,7 +27,11 @@ export const createLibraryMarkupW = (watched) => {
 export const createLibraryMarkupQ = (queue) => {
 	return queue
 		.map((movie) => {
-			const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+			const poster = movie.poster_path
+				? `https://image.tmdb.org/t/p/${
+						window.devicePixelRatio > 1 ? "w780" : "w500"
+				  }/${movie.poster_path}`
+				: movie.title;
 			const movieDate = movie.release_date;
 			const movieYear = movieDate ? movieDate.slice(0, 4) : "Unknown year";
 			const matchedGenres = "Genre";

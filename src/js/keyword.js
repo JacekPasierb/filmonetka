@@ -114,9 +114,10 @@ const createGalleryMarkup = (movies) => {
 			const movieYear = movieDate ? movieDate.slice(0, 4) : "Unknown year";
 
 			const poster = movie.poster_path
-				? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+				? `https://image.tmdb.org/t/p/${
+						window.devicePixelRatio > 1 ? "w780" : "w500"
+				  }/${movie.poster_path}`
 				: movie.title;
-
 			return `
       <li class="MovieCard" data-movie="${movie.id}">
         <div class="MoviePoster">

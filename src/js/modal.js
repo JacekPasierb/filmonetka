@@ -33,7 +33,11 @@ const searchMovieById = async (movieId) => {
 		const genres = movie.genres.map((ob) => ob.name).join(", ");
 		const overview = movie.overview;
 
-		const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+		const poster = movie.poster_path
+			? `https://image.tmdb.org/t/p/${
+					window.devicePixelRatio > 1 ? "w780" : "w500"
+			  }/${movie.poster_path}`
+			: movie.title;
 		mov.innerHTML = ` 
 		<div class="box modal__row">
               <img class="modal__poster" src=${poster} alt="plakat filmu" sizes="(min-width: 1200px) 370px" />
