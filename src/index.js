@@ -1,5 +1,5 @@
-import './sass/main.scss';
-import './js/keyword';
-import './js/loader';
-import './js/refs';
-import './js/PaginationRatunek';
+import "./sass/main.scss";
+import "./js/keyword";
+import "./js/loader";
+import "./js/refs";
+import "./js/PaginationRatunek";

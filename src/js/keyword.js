@@ -10,17 +10,17 @@ const REFS = {
 	GALLERY: qs(".Gallery"),
 };
 
-const prevSearch = document.getElementById('prevSearch')
-const nextSearch = document.getElementById('nextSearch')
-const currentSearch = document.getElementById('currentSearch')
-const prvS = document.getElementById('prvS')
-const prvprvS = document.getElementById('prvprvS')
-const nxtS = document.getElementById('nxtS')
-const nxtnxtS = document.getElementById('nxtnxtS')
+const prevSearch = document.getElementById("prevSearch");
+const nextSearch = document.getElementById("nextSearch");
+const currentSearch = document.getElementById("currentSearch");
+const prvS = document.getElementById("prvS");
+const prvprvS = document.getElementById("prvprvS");
+const nxtS = document.getElementById("nxtS");
+const nxtnxtS = document.getElementById("nxtnxtS");
 
 const getByKeyword = async (query, page) => {
 	const url = `${API_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`;
-	
+
 	return await axios
 		.get(url)
 		.then((response) => {
@@ -31,7 +31,7 @@ const getByKeyword = async (query, page) => {
 const SearchByKeywordWrongName = (e) => {
 	e.preventDefault();
 	query = e.target.searchQuery.value.trim();
-	let page = 1;
+	const page = 1;
 	REFS.FORM_NOTIFY.textContent = "";
 	if (!query) {
 		setTimeout(() => {
@@ -105,7 +105,6 @@ const SearchByKeywordWrongName = (e) => {
 		}
 	});
 };
-
 
 const createGalleryMarkup = (movies) => {
 	return movies
@@ -232,109 +231,107 @@ const genresId = [
 	},
 ];
 
-	let currentSearchPage = 1
-	let nextSearchPage = 2
-	let nxtSPage = 2;
-	let nxtnxtSPage = 3
-	let prevSearchPage = 1
-	let prvSPage = 1;
-	let prvprvSPage = 1;
-    let totalSearchPages = 100
+let currentSearchPage = 1;
+let nextSearchPage = 2;
+let nxtSPage = 2;
+let nxtnxtSPage = 3;
+let prevSearchPage = 1;
+let prvSPage = 1;
+let prvprvSPage = 1;
+let totalSearchPages = 100;
 
-    
-prevSearch.addEventListener('click', () => {
-    if(prevSearchPage > 0){
+prevSearch.addEventListener("click", () => {
+	if (prevSearchPage > 0) {
 		pageCallSearch(prevSearchPage);
-    }
-  })
-  prvS.addEventListener('click', () => {
-	if(prvSPage > 0){
+	}
+});
+prvS.addEventListener("click", () => {
+	if (prvSPage > 0) {
 		pageCallSearch(prvSPage);
 	}
-  })
-  prvprvS.addEventListener('click', () => {
-	if(prvprvSPage > 0){
+});
+prvprvS.addEventListener("click", () => {
+	if (prvprvSPage > 0) {
 		pageCallSearch(prvprvSPage);
 	}
-  })
-  
-  nextSearch.addEventListener('click', () => {
-    if(nextSearchPage > 0){
+});
+
+nextSearch.addEventListener("click", () => {
+	if (nextSearchPage > 0) {
 		pageCallSearch(nextSearchPage);
-    }
-  })
-  nxtS.addEventListener('click', () => {
-	if(nxtSPage <= totalSearchPages){
+	}
+});
+nxtS.addEventListener("click", () => {
+	if (nxtSPage <= totalSearchPages) {
 		pageCallSearch(nxtSPage);
 	}
-  })
-  nxtnxtS.addEventListener('click', () => {
-	if(nxtnxtSPage <= totalSearchPages){
+});
+nxtnxtS.addEventListener("click", () => {
+	if (nxtnxtSPage <= totalSearchPages) {
 		pageCallSearch(nxtnxtSPage);
 	}
-  })
+});
 
-  const  pageCallSearch = (page) =>{
-        getByKeyword(query, page).then((data) => {
-        if(data.total_pages !== 0) {
-            currentSearchPage = data.page;
+const pageCallSearch = (page) => {
+	getByKeyword(query, page).then((data) => {
+		if (data.total_pages !== 0) {
+			currentSearchPage = data.page;
 			nxtSPage = currentSearchPage + 1;
 			nxtnxtSPage = currentSearchPage + 2;
 			prvSPage = currentSearchPage - 1;
 			prvprvSPage = currentSearchPage - 2;
-            nextSearchPage = currentSearchPage + 1;
-            prevSearchPage = currentSearchPage - 1;
-            totalSearchPages = data.total_pages;
+			nextSearchPage = currentSearchPage + 1;
+			prevSearchPage = currentSearchPage - 1;
+			totalSearchPages = data.total_pages;
 
-            currentSearch.innerText = currentSearchPage;
+			currentSearch.innerText = currentSearchPage;
 			nxtS.innerText = nxtSPage;
 			nxtnxtS.innerText = nxtnxtSPage;
 			prvS.innerText = prvSPage;
 			prvprvS.innerText = prvprvSPage;
-            }
+		}
 
-			if(currentSearchPage <= 2){
-				prvprvS.style.display = "none";
-				prvprvS.innerText = 1;
-			  }else{
-				prvprvS.style.display = "flex";
-			  }
-			  if(currentSearchPage +1>= totalSearchPages){
-				nxtnxtS.style.display = "none";
-				nxtnxtS.innerText = totalSearchPages;
-			  }else{
-				nxtnxtS.style.display = "flex"
-			  }
-	  
-			   if(currentSearchPage <= 1){
-				prevSearch.classList.add('disabled');
-				nextSearch.classList.remove('disabled')
-				prvS.style.display = "none";
-				prvS.innerText = 1;
-			  }
-			  else if(currentSearchPage>= totalSearchPages){
-				prevSearch.classList.remove('disabled');
-				nextSearch.classList.add('disabled')
-				nxtS.style.display = "none";
-				nxtS.innerText = totalSearchPages;
-			  }else{
-				prevSearch.classList.remove('disabled');
-				nextSearch.classList.remove('disabled');
-				prvS.style.display = "flex";
-				nxtS.style.display = "flex";
-			  }
-REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
-})
-document.body.scrollTop = document.documentElement.scrollTo({top: 0, behavior: 'smooth'})
-}
+		if (currentSearchPage <= 2) {
+			prvprvS.style.display = "none";
+			prvprvS.innerText = 1;
+		} else {
+			prvprvS.style.display = "flex";
+		}
+		if (currentSearchPage + 1 >= totalSearchPages) {
+			nxtnxtS.style.display = "none";
+			nxtnxtS.innerText = totalSearchPages;
+		} else {
+			nxtnxtS.style.display = "flex";
+		}
+
+		if (currentSearchPage <= 1) {
+			prevSearch.classList.add("disabled");
+			nextSearch.classList.remove("disabled");
+			prvS.style.display = "none";
+			prvS.innerText = 1;
+		} else if (currentSearchPage >= totalSearchPages) {
+			prevSearch.classList.remove("disabled");
+			nextSearch.classList.add("disabled");
+			nxtS.style.display = "none";
+			nxtS.innerText = totalSearchPages;
+		} else {
+			prevSearch.classList.remove("disabled");
+			nextSearch.classList.remove("disabled");
+			prvS.style.display = "flex";
+			nxtS.style.display = "flex";
+		}
+		REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
+	});
+	document.body.scrollTop = document.documentElement.scrollTo({
+		top: 0,
+		behavior: "smooth",
+	});
+};
 
 REFS.FORM.addEventListener("submit", SearchByKeywordWrongName);
 let query;
 
-
-document.getElementById("SearchBtn").onclick =  () =>{
+document.getElementById("SearchBtn").onclick = () => {
 	document.getElementById("HideGalleryOnKeyword").style.display = "none";
 	document.getElementById("searchPagination").style.display = "flex";
-
 };
-

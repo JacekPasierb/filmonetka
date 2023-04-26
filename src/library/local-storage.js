@@ -1,7 +1,6 @@
 const KEY_WATCHED = "watched";
 const KEY_QUEUE = "queue";
 
-
 const getWatchedLocalStorage = () => {
 	return JSON.parse(localStorage.getItem(KEY_WATCHED));
 }; // funkcja do ściągania fimów do kolejki local storage
