@@ -1,9 +1,6 @@
-
-
-export const createLibraryMarkupW = (watched) =>{
+export const createLibraryMarkupW = (watched) => {
 	return watched
 		.map((movie) => {
-			
 			const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 			const movieDate = movie.release_date;
 			const movieYear = movieDate ? movieDate.slice(0, 4) : "Unknown year";
@@ -25,12 +22,11 @@ export const createLibraryMarkupW = (watched) =>{
       </li>`;
 		})
 		.join("");
-}
+};
 
 export const createLibraryMarkupQ = (queue) => {
 	return queue
 		.map((movie) => {
-			
 			const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 			const movieDate = movie.release_date;
 			const movieYear = movieDate ? movieDate.slice(0, 4) : "Unknown year";
@@ -52,4 +48,4 @@ export const createLibraryMarkupQ = (queue) => {
       </li>`;
 		})
 		.join("");
-}
+};

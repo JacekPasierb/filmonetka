@@ -1,5 +1,5 @@
 import Genres from "./genres.js";
-import { qs } from "./tools";
+import { qs } from "./tools.js";
 const moviesGallery = qs(".movie-section__card");
 // Tworzenie galerii popularnych filmów
 
