@@ -1,46 +1,39 @@
-import { getArrayMovies } from './fetch-library';
-import { createLibraryMarkup } from './library-markup';
-import { queue, watched } from './local-storage';
-import {watchedMovies} from './localstorage-modal'
 
-const watchedButton = document.querySelector('[name="watched"]');
-const queueButton = document.querySelector('[name="queue"]');
+import { createLibraryMarkupW, createLibraryMarkupQ } from './library-markup';
+import { queue, watched, getWatchedLocalStorage} from '../library/local-storage';
+import {watchedMovies} from './localstorage-modal';
 
-watchedButton.addEventListener("click", showWatched);
-queueButton.addEventListener("click", showQueue);
-
-function showWatched() {
-    if (!watchedButton.classList.contains('button--active')) {
-        watchedButton.classList.add('button--active');
-        watchedButton.disabled = true;
-        queueButton.classList.remove('button--active');
-        queueButton.disabled = false;
+const showWatched=(btnWatchedGallery,btnQueueGallery) =>{
+    if (!btnWatchedGallery.classList.contains('button--active')) {
+        btnWatchedGallery.classList.add('button--active');
+        btnWatchedGallery.disabled = true;
+        btnQueueGallery.classList.remove('button--active');
+        btnQueueGallery.disabled = false;
     }
-
+console.log('po',watched);
     if(!watched.length) {
         watchedMovies.innerHTML = '';
-        return
+        return;
     }
-    getArrayMovies(watched)
-    .then(data => {
-        watchedMovies.innerHTML = createLibraryMarkup(data);
-    })
-    .catch(er => console.log(er));
+   console.log('p',watchedMovies);
+        watchedMovies.innerHTML = createLibraryMarkupW(watched);
+   
 }
 
-function showQueue() {
-    if(!queueButton.classList.contains('button--active')) {
-        queueButton.classList.add('button--active');
-        queueButton.disabled = true;
-        watchedButton.classList.remove('button--active');
-        watchedButton.disabled=false;
+const showQueue = (btnQueueGallery,btnWatchedGallery) =>{
+    if(!btnQueueGallery.classList.contains('button--active')) {
+        btnQueueGallery.classList.add('button--active');
+        btnQueueGallery.disabled = true;
+        btnWatchedGallery.classList.remove('button--active');
+        btnWatchedGallery.disabled=false;
     }
     if(!queue.length) {
         watchedMovies.innerHTML = '';
         return;
     }
-    getArrayMovies(queue)
-    .then(data => {
-        watchedMovies = createLibraryMarkup(data);
-    });
+    
+    
+        watchedMovies.innerHTML = createLibraryMarkupQ(queue);
+   
 }
+export {showWatched, showQueue};

@@ -171,3 +171,9 @@
     border-radius: 5px;
   }
 }
+.watched-movies {
+  flex-wrap: wrap;
+    gap: 20px;
+    display: flex;
+    list-style: none;
+}
