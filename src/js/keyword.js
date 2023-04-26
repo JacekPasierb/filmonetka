@@ -28,6 +28,84 @@ const getByKeyword = async (query, page) => {
 		})
 		.catch((error) => console.log(error));
 };
+const SearchByKeywordWrongName = (e) => {
+	e.preventDefault();
+	query = e.target.searchQuery.value.trim();
+	let page = 1;
+	REFS.FORM_NOTIFY.textContent = "";
+	if (!query) {
+		setTimeout(() => {
+			REFS.FORM_NOTIFY.classList.add("IsHidden");
+		}, 10000);
+		REFS.FORM_NOTIFY.classList.remove("IsHidden");
+		document.getElementById("searchPagination").style.display = "none";
+		document.getElementById("gallery-main").style.display = "none";
+		REFS.FORM_NOTIFY.textContent =
+			"Search result not successful. Enter the correct movie name";
+		return;
+	}
+
+	getByKeyword(query, page).then((data) => {
+		if (!data.total_results) {
+			setTimeout(() => {
+				REFS.FORM_NOTIFY.classList.add("IsHidden");
+			}, 10000);
+			document.getElementById("searchPagination").style.display = "none";
+			document.getElementById("gallery-main").style.display = "none";
+			REFS.FORM_NOTIFY.classList.remove("IsHidden");
+			REFS.FORM_NOTIFY.textContent =
+				"Search result not successful. Enter the correct movie name";
+			return;
+		}
+		REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
+		document.getElementById("gallery-main").style.display = "flex";
+		currentSearchPage = page;
+		nxtSPage = currentSearchPage + 1;
+		nxtnxtSPage = currentSearchPage + 2;
+		prvSPage = currentSearchPage - 1;
+		prvprvSPage = currentSearchPage - 2;
+		nextSearchPage = currentSearchPage + 1;
+		prevSearchPage = currentSearchPage - 1;
+		totalSearchPages = data.total_pages;
+
+		currentSearch.innerText = currentSearchPage;
+		nxtS.innerText = nxtSPage;
+		nxtnxtS.innerText = nxtnxtSPage;
+		prvS.innerText = prvSPage;
+		prvprvS.innerText = prvprvSPage;
+
+		if (currentSearchPage <= 2) {
+			prvprvS.style.display = "none";
+			prvprvS.innerText = 1;
+		} else {
+			prvprvS.style.display = "flex";
+		}
+		if (currentSearchPage + 1 >= totalSearchPages) {
+			nxtnxtS.style.display = "none";
+			nxtnxtS.innerText = totalSearchPages;
+		} else {
+			nxtnxtS.style.display = "flex";
+		}
+
+		if (currentSearchPage <= 1) {
+			prevSearch.classList.add("disabled");
+			nextSearch.classList.remove("disabled");
+			prvS.style.display = "none";
+			prvS.innerText = 1;
+		} else if (currentSearchPage >= totalSearchPages) {
+			prevSearch.classList.remove("disabled");
+			nextSearch.classList.add("disabled");
+			nxtS.style.display = "none";
+			nxtS.innerText = totalSearchPages;
+		} else {
+			prevSearch.classList.remove("disabled");
+			nextSearch.classList.remove("disabled");
+			prvS.style.display = "flex";
+			nxtS.style.display = "flex";
+		}
+	});
+};
+
 
 const createGalleryMarkup = (movies) => {
 	return movies
@@ -196,7 +274,7 @@ prevSearch.addEventListener('click', () => {
 	}
   })
 
-  function pageCallSearch(page){
+  const  pageCallSearch = (page) =>{
         getByKeyword(query, page).then((data) => {
         if(data.total_pages !== 0) {
             currentSearchPage = data.page;
@@ -250,90 +328,11 @@ REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
 document.body.scrollTop = document.documentElement.scrollTo({top: 0, behavior: 'smooth'})
 }
 
-
 REFS.FORM.addEventListener("submit", SearchByKeywordWrongName);
 let query;
 
-function SearchByKeywordWrongName(e) {
-	e.preventDefault();
-	query = e.target.searchQuery.value.trim();
-	let page = 1;
-	REFS.FORM_NOTIFY.textContent = "";
-	if (!query) {
-		setTimeout(() => {
-			REFS.FORM_NOTIFY.classList.add("IsHidden");
-		}, 10000);
-		REFS.FORM_NOTIFY.classList.remove("IsHidden");
-		document.getElementById("searchPagination").style.display = "none";
-		document.getElementById("gallery-main").style.display = "none";
-		REFS.FORM_NOTIFY.textContent =
-			"Search result not successful. Enter the correct movie name";
-		return;
-	}
 
-	getByKeyword(query, page).then((data) => {
-		if (!data.total_results) {
-			setTimeout(() => {
-				REFS.FORM_NOTIFY.classList.add("IsHidden");
-			}, 10000);
-			document.getElementById("searchPagination").style.display = "none";
-			document.getElementById("gallery-main").style.display = "none";
-			REFS.FORM_NOTIFY.classList.remove("IsHidden");
-			REFS.FORM_NOTIFY.textContent =
-				"Search result not successful. Enter the correct movie name";
-			return;
-		}
-		REFS.GALLERY.innerHTML = createGalleryMarkup(data.results);
-		document.getElementById("gallery-main").style.display = "flex";
-		currentSearchPage = page;
-		nxtSPage = currentSearchPage + 1;
-		nxtnxtSPage = currentSearchPage + 2;
-		prvSPage = currentSearchPage - 1;
-		prvprvSPage = currentSearchPage - 2;
-		nextSearchPage = currentSearchPage + 1;
-		prevSearchPage = currentSearchPage - 1;
-		totalSearchPages = data.total_pages;
-
-		currentSearch.innerText = currentSearchPage;
-		nxtS.innerText = nxtSPage;
-		nxtnxtS.innerText = nxtnxtSPage;
-		prvS.innerText = prvSPage;
-		prvprvS.innerText = prvprvSPage;
-
-		if(currentSearchPage <= 2){
-			prvprvS.style.display = "none";
-			prvprvS.innerText = 1;
-		  }else{
-			prvprvS.style.display = "flex";
-		  }
-		  if(currentSearchPage +1>= totalSearchPages){
-			nxtnxtS.style.display = "none";
-			nxtnxtS.innerText = totalSearchPages;
-		  }else{
-			nxtnxtS.style.display = "flex"
-		  }
-	
-		   if(currentSearchPage <= 1){
-			prevSearch.classList.add('disabled');
-			nextSearch.classList.remove('disabled')
-			prvS.style.display = "none";
-			prvS.innerText = 1;
-		  }
-		  else if(currentSearchPage>= totalSearchPages){
-			prevSearch.classList.remove('disabled');
-			nextSearch.classList.add('disabled')
-			nxtS.style.display = "none";
-			nxtS.innerText = totalSearchPages;
-		  }else{
-			prevSearch.classList.remove('disabled');
-			nextSearch.classList.remove('disabled');
-			prvS.style.display = "flex";
-			nxtS.style.display = "flex";
-		  }
-	});
-}
-
-document.getElementById("SearchBtn").onclick = function () {
+document.getElementById("SearchBtn").onclick =  () =>{
 	document.getElementById("HideGalleryOnKeyword").style.display = "none";
 	document.getElementById("searchPagination").style.display = "flex";
 
