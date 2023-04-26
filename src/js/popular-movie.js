@@ -1,8 +1,8 @@
 import Genres from "./genres.js";
 import { API_KEY, BASE_URL, TREND_URL } from "./api_variables.js";
-import { showHideLoader } from "./loader";
-import refs from "./refs";
-import { qs } from "./tools";
+import { showHideLoader } from "./loader.js";
+import refs from "./refs.js";
+import { qs } from "./tools.js";
 
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
