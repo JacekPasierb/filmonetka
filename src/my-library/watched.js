@@ -6,7 +6,7 @@ import Genres from "../js/genres";
 const markButton = document.querySelector(".button-mark");
 const movieCard = document.querySelector(".movie-container__card");
 markButton.addEventListener("click", markFunction);
-function markFunction() {
+const markFunction = ()=> {
 	const innerHTML = '<span status = "watched"></span>';
 	movieCard.prepend(innerHTML);
 }

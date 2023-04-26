@@ -1,6 +1,6 @@
 
 
-export function createLibraryMarkupW(watched) {
+export const createLibraryMarkupW = (watched) =>{
 	return watched
 		.map((movie) => {
 			console.log("w", movie);
@@ -27,7 +27,7 @@ export function createLibraryMarkupW(watched) {
 		.join("");
 }
 
-export function createLibraryMarkupQ(queue) {
+export const createLibraryMarkupQ = (queue) => {
 	return queue
 		.map((movie) => {
 			console.log("w", movie);
