@@ -28,7 +28,7 @@ const getByKeyword = async (query, page) => {
 		})
 		.catch((error) => console.log(error));
 };
-const SearchByKeywordWrongName = (e) => {
+const searchByKeywordWrongName = (e) => {
 	e.preventDefault();
 	query = e.target.searchQuery.value.trim();
 	const page = 1;
@@ -328,7 +328,7 @@ const pageCallSearch = (page) => {
 	});
 };
 
-REFS.FORM.addEventListener("submit", SearchByKeywordWrongName);
+REFS.FORM.addEventListener("submit", searchByKeywordWrongName);
 let query;
 
 document.getElementById("SearchBtn").onclick = () => {
