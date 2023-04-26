@@ -1,6 +1,6 @@
 import { showWatched, showQueue } from '../library/add-localstorage';
 import { getWatchedLocalStorage, queue, watched } from '../library/local-storage';
-import { qs } from "./tools";
+import { qs } from "../js/tools";
 const body = qs('body');
 const headerElement = document.createElement('header');
 headerElement.classList.add('header-library');

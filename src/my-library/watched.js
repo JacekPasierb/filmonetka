@@ -2,7 +2,7 @@ import localStorage from "./local-storage";
 import { renderMovieCard } from "../js/renderMovieCards";
 import Trending from "../js/trendingMovie";
 import Genres from "../js/genres";
-import { qs } from "./tools";
+import { qs } from "../js/tools";
 
 const markButton = qs(".button-mark");
 const movieCard = qs(".movie-container__card");

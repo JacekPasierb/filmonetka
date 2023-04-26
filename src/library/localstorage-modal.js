@@ -3,7 +3,7 @@ import {onAddToWatched, onAddToQueue} from "./addtowatchedqueue"
 
 import { createLibraryMarkup } from "./library-markup";
 import { queue, setQueueLocalStorage, setWatchedLocalStorage, watched } from "./local-storage";
-import { qs } from "./tools";
+import { qs } from "../js/tools";
 const addWatched = qs(".modal__button-watched");
 const addQueue = qs(".modal__button-queue");
 const watchedMovies = qs(".watched-movies");
