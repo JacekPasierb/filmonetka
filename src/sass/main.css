@@ -775,6 +775,39 @@ body {
   display: flex;
   list-style: none;
 }
+@media screen and (min-width: 320px) {
+  .watched-movies li:nth-child(1) {
+    margin-top: 20px;
+  }
+  .watched-movies li:nth-child(20) {
+    margin-bottom: 40px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .watched-movies li:nth-child(1) {
+    margin-top: 59px;
+  }
+  .watched-movies li:nth-child(2) {
+    margin-top: 59px;
+  }
+  .watched-movies li:nth-child(20) {
+    margin-bottom: 61px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .watched-movies li:nth-child(1) {
+    margin-top: 60px;
+  }
+  .watched-movies li:nth-child(2) {
+    margin-top: 60px;
+  }
+  .watched-movies li:nth-child(3) {
+    margin-top: 60px;
+  }
+  .watched-movies li:nth-child(20) {
+    margin-bottom: 60px;
+  }
+}
 
 .loader,
 modal__loader {
