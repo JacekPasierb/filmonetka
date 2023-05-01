@@ -737,6 +737,11 @@ body {
   filter: drop-shadow(0 8px 43px rgba(255, 107, 1, 0.6));
 }
 
+.button--active {
+  background-color: var(--button_active);
+  border-color: var(--button_active);
+}
+
 .button-library.active {
   width: 129.53;
   height: 44px;

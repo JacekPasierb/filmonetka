@@ -47,21 +47,15 @@ const secondInnerHTML = `<li class="buttons-list">
 const buttonLists = qs(".buttons");
 buttonLists.insertAdjacentHTML("afterbegin", secondInnerHTML);
 
-const activeBtn = qs(".button-library");
-activeBtn.addEventListener("click", () => {
-	activeBtn.classList.add("active");
-	activeBtn.classList.remove("active");
-});
+
 
 const btnWatchedGallery = qs("#btnWatchedGallery");
 const btnQueueGallery = qs("#btnQueueGallery");
-btnWatchedGallery.addEventListener("click", (e) => {
-	e.preventDefault();
 
-	showWatched(btnWatchedGallery, btnQueueGallery);
-});
+showWatched(btnWatchedGallery, btnQueueGallery);
 btnQueueGallery.addEventListener("click", (e) => {
 	e.preventDefault();
 
 	showQueue(btnQueueGallery, btnWatchedGallery);
 });
+
