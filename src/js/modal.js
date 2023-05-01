@@ -89,23 +89,36 @@ const searchMovieById = async (movieId) => {
 		if (watched.find((obj) => obj.id === movie.id)) {
 			watchedButton.style.background = "green";
 			watchedButton.textContent = "DELETED FROM WATCHED";
-			return;
+		} else {
+			watchedButton.style.background = "#ff6b01";
+			watchedButton.textContent = "ADD TO WATCHED";
 		}
 		if (queue.find((obj) => obj.id === movie.id)) {
 			queueButton.style.background = "green";
 			queueButton.textContent = "DELETED FROM QUEUE";
-			return;
+		} else {
+			queueButton.style.background = "white";
+			queueButton.textContent = "ADD TO QUEUE";
 		}
 		watchedButton.addEventListener("click", (e) => {
-			e.preventDefault();
-			watchedButton.style.background = "green";
-			watchedButton.textContent = "DELETED FROM WATCHED";
+			if (watched.find((obj) => obj.id === movie.id)) {
+				watchedButton.style.background = "#ff6b01";
+				watchedButton.textContent = "ADD TO WATCHED";
+			} else {
+				watchedButton.style.background = "green";
+				watchedButton.textContent = "DELETED FROM WATCHED";
+			}
+
 			onAddToWatched(movie, watchedButton);
 		});
 		queueButton.addEventListener("click", (e) => {
-			e.preventDefault();
-			queueButton.style.background = "green";
-			queueButton.textContent = "DELETED FROM QUEUE";
+			if (queue.find((obj) => obj.id === movie.id)) {
+				queueButton.style.background = "white";
+				queueButton.textContent = "ADD TO QUEUE";
+			} else {
+				queueButton.style.background = "green";
+				queueButton.textContent = "DELETED FROM QUEUE";
+			}
 			onAddToQueue(movie, queueButton);
 		});
 	} catch (error) {
@@ -131,7 +144,7 @@ const closeByPush = (event) => {
 };
 window.addEventListener("keydown", closeByPush);
 gallerysDom.addEventListener("click", (e) => {
-	console.log("Szukane");
+	
 	const movieCard = e.target.closest(".MovieCard");
 
 	if (movieCard) {
@@ -144,7 +157,7 @@ gallerysDom.addEventListener("click", (e) => {
 });
 
 galleryTrendDom.addEventListener("click", (e) => {
-	console.log("Popularne");
+	
 	const movieCard = e.target.closest(".movie-container__card");
 
 	if (movieCard) {
