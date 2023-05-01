@@ -188,10 +188,7 @@
   }
 }
 .watched-movies {
-  flex-wrap: wrap;
-  gap: 20px;
-  display: flex;
-  list-style: none;
+
   @media screen and (min-width: 320px) {
     li:nth-child(1) {
       margin-top: 20px;
