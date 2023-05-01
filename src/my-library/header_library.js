@@ -177,7 +177,7 @@ window.addEventListener("keydown", closeByPush);
 //==================
 showWatched(btnWatchedGallery, btnQueueGallery);
 watchedMovies.addEventListener("click", (e) => {
-	console.log("obejrzane");
+	
 	const movieCard = e.target.closest(".MovieCard");
 
 	if (movieCard) {
