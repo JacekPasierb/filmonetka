@@ -10,7 +10,6 @@ divBackground.classList.add("container-background");
 headerElement.prepend(divBackground);
 const containerBackground = qs(".container-background");
 
-const linkElement = qs(".header-library__image-link");
 const imgInnerHTML = `<a class="header-library__image-link" href="./index.html">
 <svg class="HeaderSvgFilm">
           <use href="/src/images/symbol-defs.svg#icon-film"></use>

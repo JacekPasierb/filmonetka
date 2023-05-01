@@ -1,8 +1,7 @@
 import { createLibraryMarkupW, createLibraryMarkupQ } from "./library_markup";
 import {
 	queue,
-	watched,
-	getWatchedLocalStorage,
+	watched
 } from "../library/local-storage";
 import { watchedMovies } from "./localstorage-modal";
 

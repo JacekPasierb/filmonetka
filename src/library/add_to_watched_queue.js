@@ -5,7 +5,7 @@ import {
 	setQueueLocalStorage,
 } from "./local-storage";
 
-const onAddToWatched = (movie, watchedButton) => {
+const onAddToWatched = (movie) => {
 	if (watched.find((obj) => obj.id === movie.id)) {
 		return;
 	}
@@ -13,7 +13,7 @@ const onAddToWatched = (movie, watchedButton) => {
 	setWatchedLocalStorage(watched);
 };
 
-const onAddToQueue = (movie, queueButton) => {
+const onAddToQueue = (movie) => {
 	if (queue.find((obj) => obj.id === movie.id)) {
 		return;
 	}
