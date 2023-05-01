@@ -1,49 +1,49 @@
-import axios from 'axios';
-import { qs } from './tools';
-import { BASE_URL, API_KEY } from './api_variables';
-import { queue, watched } from '../library/local-storage';
-import { onAddToWatched, onAddToQueue } from '../library/add_to_watched_queue';
-import { showHideLoader } from './loader.js';
-import refs from './refs.js';
+import axios from "axios";
+import { qs } from "./tools";
+import { BASE_URL, API_KEY } from "./api_variables";
+import { queue, watched } from "../library/local-storage";
+import { onAddToWatched, onAddToQueue } from "../library/add_to_watched_queue";
+import { showHideLoader } from "./loader.js";
+import refs from "./refs.js";
 
-const gallerysDom = qs('.Gallery');
-const galleryTrendDom = qs('.movie-section__card');
+const gallerysDom = qs(".Gallery");
+const galleryTrendDom = qs(".movie-section__card");
 
-const modal = qs('[data-modal]');
-const closeModalBtn = qs('[data-modal-close]');
-const mov = qs('.mov');
+const modal = qs("[data-modal]");
+const closeModalBtn = qs("[data-modal-close]");
+const mov = qs(".mov");
 
-const toggleModal = () => modal.classList.toggle('is-hidden');
+const toggleModal = () => modal.classList.toggle("is-hidden");
 
-const fetchMovie = async movieId => {
-  showHideLoader(refs.loader);
-  const response = await axios.get(
-    `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`,
-  );
-  showHideLoader(refs.loader);
+const fetchMovie = async (movieId) => {
+	showHideLoader(refs.loader);
+	const response = await axios.get(
+		`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`,
+	);
+	showHideLoader(refs.loader);
 
-  const movie = response.data;
+	const movie = response.data;
 
-  return movie;
+	return movie;
 };
-const searchMovieById = async movieId => {
-  try {
-    const movie = await fetchMovie(movieId);
+const searchMovieById = async (movieId) => {
+	try {
+		const movie = await fetchMovie(movieId);
 
-    const movieName = movie.title;
-    const vote = movie.vote_average.toFixed(1);
-    const votes = movie.vote_count;
-    const popularity = movie.popularity.toFixed(1);
-    const originalTitle = movie.original_title;
-    const genres = movie.genres.map(ob => ob.name).join(', ');
-    const overview = movie.overview;
+		const movieName = movie.title;
+		const vote = movie.vote_average.toFixed(1);
+		const votes = movie.vote_count;
+		const popularity = movie.popularity.toFixed(1);
+		const originalTitle = movie.original_title;
+		const genres = movie.genres.map((ob) => ob.name).join(", ");
+		const overview = movie.overview;
 
-    const poster = movie.poster_path
-      ? `https://image.tmdb.org/t/p/${window.devicePixelRatio > 1 ? 'w780' : 'w500'}/${
-          movie.poster_path
-        }`
-      : movie.title;
-    mov.innerHTML = ` 
+		const poster = movie.poster_path
+			? `https://image.tmdb.org/t/p/${
+					window.devicePixelRatio > 1 ? "w780" : "w500"
+			  }/${movie.poster_path}`
+			: movie.title;
+		mov.innerHTML = ` 
 		<div class="box modal__row">
               <img class="modal__poster" src=${poster} alt="plakat filmu" sizes="(min-width: 1200px) 370px" />
 	          <div>
@@ -84,72 +84,74 @@ const searchMovieById = async movieId => {
 		                </div>
 		       </div>
 		</div>`;
-    const watchedButton = qs('#watched');
-    const queueButton = qs('#queue');
-    if (watched.find(obj => obj.id === movie.id)) {
-      watchedButton.style.background = 'green';
-      watchedButton.textContent = 'DELETED FROM WATCHED';
-      return;
-    }
-    if (queue.find(obj => obj.id === movie.id)) {
-      queueButton.style.background = 'green';
-      queueButton.textContent = 'DELETED FROM QUEUE';
-      return;
-    }
-    watchedButton.addEventListener('click', e => {
-      e.preventDefault();
-      watchedButton.style.background = 'green';
-      watchedButton.textContent = 'DELETED FROM WATCHED';
-      onAddToWatched(movie, watchedButton);
-    });
-    queueButton.addEventListener('click', e => {
-      e.preventDefault();
-      queueButton.style.background = 'green';
-      queueButton.textContent = 'DELETED FROM QUEUE';
-      onAddToQueue(movie, queueButton);
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
+		const watchedButton = qs("#watched");
+		const queueButton = qs("#queue");
+		if (watched.find((obj) => obj.id === movie.id)) {
+			watchedButton.style.background = "green";
+			watchedButton.textContent = "DELETED FROM WATCHED";
+			return;
+		}
+		if (queue.find((obj) => obj.id === movie.id)) {
+			queueButton.style.background = "green";
+			queueButton.textContent = "DELETED FROM QUEUE";
+			return;
+		}
+		watchedButton.addEventListener("click", (e) => {
+			e.preventDefault();
+			watchedButton.style.background = "green";
+			watchedButton.textContent = "DELETED FROM WATCHED";
+			onAddToWatched(movie, watchedButton);
+		});
+		queueButton.addEventListener("click", (e) => {
+			e.preventDefault();
+			queueButton.style.background = "green";
+			queueButton.textContent = "DELETED FROM QUEUE";
+			onAddToQueue(movie, queueButton);
+		});
+	} catch (error) {
+		console.log(error.message);
+	}
 };
 
-closeModalBtn.addEventListener('click', e => {
-  e.preventDefault();
-  toggleModal();
+closeModalBtn.addEventListener("click", (e) => {
+	e.preventDefault();
+	toggleModal();
 });
-const closeByClick = event => {
-  if (event.target === modal) {
-    toggleModal();
-  }
+const closeByClick = (event) => {
+	if (event.target === modal) {
+		toggleModal();
+	}
 };
-modal.addEventListener('click', closeByClick);
+modal.addEventListener("click", closeByClick);
 
-const closeByPush = event => {
-  if (event.key === 'Escape' || event.keyCode === 27) {
-    toggleModal();
-  }
+const closeByPush = (event) => {
+	if (event.key === "Escape" || event.keyCode === 27) {
+		toggleModal();
+	}
 };
-window.addEventListener('keydown', closeByPush);
-gallerysDom.addEventListener('click', e => {
-  const movieCard = e.target.closest('.MovieCard');
+window.addEventListener("keydown", closeByPush);
+gallerysDom.addEventListener("click", (e) => {
+	console.log("Szukane");
+	const movieCard = e.target.closest(".MovieCard");
 
-  if (movieCard) {
-    const movieId = movieCard.dataset.movie;
+	if (movieCard) {
+		const movieId = movieCard.dataset.movie;
 
-    toggleModal();
+		toggleModal();
 
-    searchMovieById(movieId);
-  }
+		searchMovieById(movieId);
+	}
 });
 
-galleryTrendDom.addEventListener('click', e => {
-  const movieCard = e.target.closest('.movie-container__card');
+galleryTrendDom.addEventListener("click", (e) => {
+	console.log("Popularne");
+	const movieCard = e.target.closest(".movie-container__card");
 
-  if (movieCard) {
-    const movieId = movieCard.dataset.id;
+	if (movieCard) {
+		const movieId = movieCard.dataset.id;
 
-    toggleModal();
+		toggleModal();
 
-    searchMovieById(movieId);
-  }
+		searchMovieById(movieId);
+	}
 });

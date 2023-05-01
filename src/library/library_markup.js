@@ -1,3 +1,4 @@
+import { qs } from "../js/tools";
 export const createLibraryMarkupW = (watched) => {
 	return watched
 		.map((movie) => {
@@ -9,6 +10,7 @@ export const createLibraryMarkupW = (watched) => {
 			const movieDate = movie.release_date;
 			const movieYear = movieDate ? movieDate.slice(0, 4) : "Unknown year";
 			const matchedGenres = "Genre";
+    
 
 			return `
       <li class="MovieCard" data-movie="${movie.id}">
@@ -26,8 +28,8 @@ export const createLibraryMarkupW = (watched) => {
       </li>`;
 		})
 		.join("");
+    
 };
-
 export const createLibraryMarkupQ = (queue) => {
 	return queue
 		.map((movie) => {
