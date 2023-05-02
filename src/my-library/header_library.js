@@ -18,7 +18,7 @@ const containerBackground = qs(".container-background");
 
 const imgInnerHTML = `<a class="header-library__image-link" href="./index.html">
 <svg class="HeaderSvgFilm">
-          <use href="/src/images/symbol-defs.svg#icon-film"></use>
+          <use href="/symbol-defs.a8b2e413.svg#icon-film"></use>
         </svg>
     <span class="header-library__image-span">Filmoteka</span>
     </a>`;
