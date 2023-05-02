@@ -94,7 +94,7 @@ const searchMovieById = async (movieId) => {
 			watchedButton.textContent = "ADD TO WATCHED";
 		}
 		if (queue.find((obj) => obj.id === movie.id)) {
-			queueButton.style.background = "green";
+			queueButton.style.background = "#545454";
 			queueButton.textContent = "DELETED FROM QUEUE";
 		} else {
 			queueButton.style.background = "white";
@@ -116,7 +116,7 @@ const searchMovieById = async (movieId) => {
 				queueButton.style.background = "white";
 				queueButton.textContent = "ADD TO QUEUE";
 			} else {
-				queueButton.style.background = "green";
+				queueButton.style.background = "#545454";
 				queueButton.textContent = "DELETED FROM QUEUE";
 			}
 			onAddToQueue(movie, queueButton);
