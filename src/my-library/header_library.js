@@ -207,3 +207,8 @@ btnQueueGallery.addEventListener("click", (e) => {
 
 	showQueue(btnQueueGallery, btnWatchedGallery);
 });
+btnWatchedGallery.addEventListener("click", (e) => {
+	e.preventDefault();
+
+	showWatched(btnWatchedGallery, btnQueueGallery);
+});

@@ -35,10 +35,6 @@ const showQueue = (btnQueueGallery, btnWatchedGallery) => {
 
 	watchedMovies.innerHTML = createLibraryMarkupQ(queue);
 	//------------
-	btnWatchedGallery.addEventListener("click", (e) => {
-		e.preventDefault();
-
-		showWatched(btnWatchedGallery, btnQueueGallery);
-	});
+	
 };
 export { showWatched, showQueue };
