@@ -774,12 +774,6 @@ body {
   border-radius: 5px;
 }
 
-.watched-movies {
-  flex-wrap: wrap;
-  gap: 20px;
-  display: flex;
-  list-style: none;
-}
 @media screen and (min-width: 320px) {
   .watched-movies li:nth-child(1) {
     margin-top: 20px;
@@ -1231,6 +1225,7 @@ modal__loader {
 }
 .modal__button-watched:hover {
   background-color: #ff870b;
+  scale: 0.95;
 }
 @media screen and (min-width: 768px) {
   .modal__button-watched {
@@ -1261,7 +1256,7 @@ modal__loader {
 }
 .modal__button-queue:hover {
   background: #000;
-  color: #fff;
+  scale: 0.95;
 }
 @media screen and (min-width: 768px) {
   .modal__button-queue {

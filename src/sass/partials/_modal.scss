@@ -204,6 +204,7 @@
 
     &:hover {
       background-color: #ff870b;
+      scale: 0.95;
     }
 
     @media screen and (min-width: 768px) {
@@ -234,7 +235,7 @@
 
     &:hover {
       background: #000;
-      color: #fff;
+      scale: 0.95;
     }
 
     @media screen and (min-width: 768px) {
