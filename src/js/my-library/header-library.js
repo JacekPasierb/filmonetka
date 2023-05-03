@@ -190,15 +190,17 @@ const closeByPush = (event) => {
 window.addEventListener("keydown", closeByPush);
 //==================
 showWatched(btnWatchedGallery, btnQueueGallery);
-watchedMovies.addEventListener("click", (e) => {
+watchedMovies.addEventListener("click", async (e) => {
 	const movieCard = e.target.closest(".MovieCard");
-
 	if (movieCard) {
-		const movieId = movieCard.dataset.movie;
+		try {
+			const movieId = movieCard.dataset.movie;
 
-		searchMovieById(movieId)
-			.then(() => toggleModal())
-			.catch((error) => console.error(error));
+			await searchMovieById(movieId);
+			toggleModal();
+		} catch (error) {
+			console.log(error);
+		}
 	}
 });
 btnQueueGallery.addEventListener("click", (e) => {

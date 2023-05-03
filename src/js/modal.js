@@ -194,26 +194,32 @@ const closeByPush = (event) => {
 	}
 };
 window.addEventListener("keydown", closeByPush);
-gallerysDom.addEventListener("click", (e) => {
+gallerysDom.addEventListener("click", async (e) => {
 	const movieCard = e.target.closest(".MovieCard");
 
 	if (movieCard) {
-		const movieId = movieCard.dataset.movie;
+		try {
+			const movieId = movieCard.dataset.id;
 
-		searchMovieById(movieId)
-			.then(() => toggleModal())
-			.catch((error) => console.error(error));
+			await searchMovieById(movieId);
+			toggleModal();
+		} catch (error) {
+			console.log(error);
+		}
 	}
 });
 
-galleryTrendDom.addEventListener("click", (e) => {
+galleryTrendDom.addEventListener("click", async (e) => {
 	const movieCard = e.target.closest(".movie-container__card");
 
 	if (movieCard) {
-		const movieId = movieCard.dataset.id;
+		try {
+			const movieId = movieCard.dataset.id;
 
-		searchMovieById(movieId)
-			.then(() => toggleModal())
-			.catch((error) => console.error(error));
+			await searchMovieById(movieId);
+			toggleModal();
+		} catch (error) {
+			console.log(error);
+		}
 	}
 });
