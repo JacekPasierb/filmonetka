@@ -198,8 +198,9 @@ watchedMovies.addEventListener("click", (e) => {
 
 		
 
-		searchMovieById(movieId);
-		toggleModal();
+		searchMovieById(movieId)
+			.then(() => toggleModal())
+			.catch((error) => console.error(error));
 	}
 });
 btnQueueGallery.addEventListener("click", (e) => {
