@@ -37,6 +37,16 @@ const searchMovieById = async (movieId) => {
 		const originalTitle = movie.original_title;
 		const genres = movie.genres.map((ob) => ob.name).join(", ");
 		const overview = movie.overview;
+		//-----Fetch zwiastun
+		const zwiastun = async () => {
+			const response = await axios.get(
+				`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`,
+			);
+
+			const video = response.data;
+			const vid = video.results[0].key;
+			return vid;
+		};
 
 		const poster = movie.poster_path
 			? `https://image.tmdb.org/t/p/${
@@ -81,11 +91,45 @@ const searchMovieById = async (movieId) => {
 		              <div class="modal__buttons">
 		             <button class="modal__button-watched" id="watched">add to Watched</button>
 		              <button class="modal__button-queue" id="queue">add to queue</button>
+					  <button class="modal__button-trailer" id="zwiastun">zwiastun</button>
+					  
 		                </div>
 		       </div>
 		</div>`;
 		const watchedButton = qs("#watched");
 		const queueButton = qs("#queue");
+		const zwButton = qs("#zwiastun");
+		zwButton.addEventListener("click", () => {
+			zwiastun().then((vid) => {
+				const iframe = document.querySelector("iframe");
+
+				iframe.src = `https://www.youtube.com/embed/${vid}`;
+
+				const div = document.querySelector("[data-mod]");
+
+				div.style.display = "block";
+				const closeModBtn = document.querySelector("[data-mod-close]");
+				closeModBtn.addEventListener("click", (e) => {
+					e.preventDefault();
+					div.style.display = "none";
+				});
+				const mod = document.querySelector("[data-mod]");
+				const closeByClicked = (event) => {
+					if (event.target === mod) {
+						div.style.display = "none";
+					}
+				};
+
+				mod.addEventListener("click", closeByClicked);
+
+				const closeByPushed = (event) => {
+					if (event.key === "Escape" || event.keyCode === 27) {
+						div.style.display = "none";
+					}
+				};
+				window.addEventListener("keydown", closeByPushed);
+			});
+		});
 		if (watched.find((obj) => obj.id === movie.id)) {
 			watchedButton.style.background = "green";
 			watchedButton.textContent = "DELETED FROM WATCHED";
@@ -149,7 +193,9 @@ gallerysDom.addEventListener("click", (e) => {
 	if (movieCard) {
 		const movieId = movieCard.dataset.movie;
 
-		searchMovieById(movieId).then(() => toggleModal()).catch((error)=>console.error(error));
+		searchMovieById(movieId)
+			.then(() => toggleModal())
+			.catch((error) => console.error(error));
 	}
 });
 

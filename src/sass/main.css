@@ -1269,6 +1269,10 @@ modal__loader {
   }
 }
 
+.hide {
+  display: none;
+}
+
 .pagination {
   display: flex;
   margin: 0px 30px 40px;
