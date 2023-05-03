@@ -149,9 +149,7 @@ gallerysDom.addEventListener("click", (e) => {
 	if (movieCard) {
 		const movieId = movieCard.dataset.movie;
 
-		toggleModal();
-
-		searchMovieById(movieId);
+		searchMovieById(movieId).then(() => toggleModal()).catch((error)=>console.error(error));
 	}
 });
 
@@ -161,8 +159,8 @@ galleryTrendDom.addEventListener("click", (e) => {
 	if (movieCard) {
 		const movieId = movieCard.dataset.id;
 
-		toggleModal();
-
-		searchMovieById(movieId);
+		searchMovieById(movieId)
+			.then(() => toggleModal())
+			.catch((error) => console.error(error));
 	}
 });

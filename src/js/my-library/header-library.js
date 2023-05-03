@@ -196,9 +196,11 @@ watchedMovies.addEventListener("click", (e) => {
 	if (movieCard) {
 		const movieId = movieCard.dataset.movie;
 
-		toggleModal();
+		
 
-		searchMovieById(movieId);
+		searchMovieById(movieId)
+			.then(() => toggleModal())
+			.catch((error) => console.error(error));
 	}
 });
 btnQueueGallery.addEventListener("click", (e) => {
