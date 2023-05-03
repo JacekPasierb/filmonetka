@@ -1,8 +1,8 @@
 import axios from "axios";
 import { qs } from "./tools";
 import { BASE_URL, API_KEY } from "./api-variables";
-import { queue, watched } from "../library/local-storage";
-import { onAddToWatched, onAddToQueue } from "../library/add-to-watched-queue";
+import { queue, watched } from "./library/local-storage";
+import { onAddToWatched, onAddToQueue } from "./library/add-to-watched-queue";
 import { showHideLoader } from "./loader.js";
 import refs from "./refs.js";
 
@@ -144,7 +144,6 @@ const closeByPush = (event) => {
 };
 window.addEventListener("keydown", closeByPush);
 gallerysDom.addEventListener("click", (e) => {
-	
 	const movieCard = e.target.closest(".MovieCard");
 
 	if (movieCard) {
@@ -157,7 +156,6 @@ gallerysDom.addEventListener("click", (e) => {
 });
 
 galleryTrendDom.addEventListener("click", (e) => {
-	
 	const movieCard = e.target.closest(".movie-container__card");
 
 	if (movieCard) {

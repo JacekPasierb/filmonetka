@@ -2,7 +2,7 @@ import { createLibraryMarkupW, createLibraryMarkupQ } from "./library-markup";
 import {
 	queue,
 	watched
-} from "../library/local-storage";
+} from "./local-storage";
 import { watchedMovies } from "./localstorage-modal";
 
 const showWatched = (btnWatchedGallery, btnQueueGallery) => {

@@ -1,8 +1,8 @@
 import axios from "axios";
-import { BASE_URL, API_KEY } from "../js/api-variables";
+import { BASE_URL, API_KEY } from "../api-variables";
 import { queue, watched } from "../library/local-storage";
 import { showWatched, showQueue } from "../library/add-localstorage";
-import { qs } from "../js/tools";
+import { qs } from "../tools";
 import { watchedMovies } from "../library/localstorage-modal";
 import { onAddToWatched, onAddToQueue } from "../library/add-to-watched-queue";
 
@@ -191,7 +191,6 @@ window.addEventListener("keydown", closeByPush);
 //==================
 showWatched(btnWatchedGallery, btnQueueGallery);
 watchedMovies.addEventListener("click", (e) => {
-	
 	const movieCard = e.target.closest(".MovieCard");
 
 	if (movieCard) {
