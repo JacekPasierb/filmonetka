@@ -1,5 +1,5 @@
-import { onAddToWatched, onAddToQueue } from "./add_to_watched_queue";
-import { createLibraryMarkup } from "./library_markup";
+import { onAddToWatched, onAddToQueue } from "./add-to-watched-queue";
+import { createLibraryMarkup } from "./library-markup";
 import {
 	queue,
 	setQueueLocalStorage,

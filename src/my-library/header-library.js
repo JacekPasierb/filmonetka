@@ -1,10 +1,10 @@
 import axios from "axios";
-import { BASE_URL, API_KEY } from "../js/api_variables";
+import { BASE_URL, API_KEY } from "../js/api-variables";
 import { queue, watched } from "../library/local-storage";
 import { showWatched, showQueue } from "../library/add-localstorage";
 import { qs } from "../js/tools";
 import { watchedMovies } from "../library/localstorage-modal";
-import { onAddToWatched, onAddToQueue } from "../library/add_to_watched_queue";
+import { onAddToWatched, onAddToQueue } from "../library/add-to-watched-queue";
 
 const body = qs("body");
 const headerElement = document.createElement("header");
