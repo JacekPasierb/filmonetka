@@ -1,8 +1,8 @@
 import axios from "axios";
 import { qs } from "./tools";
-import { BASE_URL, API_KEY } from "./api_variables";
+import { BASE_URL, API_KEY } from "./api-variables";
 import { queue, watched } from "../library/local-storage";
-import { onAddToWatched, onAddToQueue } from "../library/add_to_watched_queue";
+import { onAddToWatched, onAddToQueue } from "../library/add-to-watched-queue";
 import { showHideLoader } from "./loader.js";
 import refs from "./refs.js";
 

@@ -1,4 +1,4 @@
-import { createLibraryMarkupW, createLibraryMarkupQ } from "./library_markup";
+import { createLibraryMarkupW, createLibraryMarkupQ } from "./library-markup";
 import {
 	queue,
 	watched
