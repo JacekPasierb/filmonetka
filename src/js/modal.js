@@ -199,7 +199,7 @@ gallerysDom.addEventListener("click", async (e) => {
 
 	if (movieCard) {
 		try {
-			const movieId = movieCard.dataset.id;
+			const movieId = movieCard.dataset.movie;
 
 			await searchMovieById(movieId);
 			toggleModal();
