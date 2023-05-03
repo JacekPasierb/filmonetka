@@ -8,7 +8,6 @@ import {
 const onAddToWatched = (movie) => {
 	const movieInWatched = watched.find((obj) => obj.id === movie.id);
 	if (movieInWatched) {
-		
 		watched.splice(watched.indexOf(movieInWatched), 1);
 		setWatchedLocalStorage(watched);
 	} else {

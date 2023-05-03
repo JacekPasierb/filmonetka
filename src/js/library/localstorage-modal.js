@@ -6,7 +6,7 @@ import {
 	setWatchedLocalStorage,
 	watched,
 } from "./local-storage";
-import { qs } from "../js/tools";
+import { qs } from "../tools";
 const addWatched = qs(".modal__button-watched");
 const addQueue = qs(".modal__button-queue");
 const watchedMovies = qs(".watched-movies");
