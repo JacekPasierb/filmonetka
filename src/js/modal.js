@@ -99,37 +99,44 @@ const searchMovieById = async (movieId) => {
 		const watchedButton = qs("#watched");
 		const queueButton = qs("#queue");
 		const zwButton = qs("#zwiastun");
-		zwButton.addEventListener("click", () => {
-			zwiastun().then((vid) => {
-				const iframe = document.querySelector("iframe");
+		const div = document.querySelector("[data-mod]");
+		const mod = document.querySelector("[data-mod]");
+		const closeModBtn = document.querySelector("[data-mod-close]");
+		const iframe = document.querySelector("iframe");
+		const openTrailer = async () => {
+			const vid = await zwiastun();
 
-				iframe.src = `https://www.youtube.com/embed/${vid}`;
+			iframe.src = `https://www.youtube.com/embed/${vid}`;
 
-				const div = document.querySelector("[data-mod]");
-
+			iframe.addEventListener("load", () => {
 				div.style.display = "block";
-				const closeModBtn = document.querySelector("[data-mod-close]");
-				closeModBtn.addEventListener("click", (e) => {
-					e.preventDefault();
-					div.style.display = "none";
-				});
-				const mod = document.querySelector("[data-mod]");
-				const closeByClicked = (event) => {
-					if (event.target === mod) {
-						div.style.display = "none";
-					}
-				};
-
-				mod.addEventListener("click", closeByClicked);
-
-				const closeByPushed = (event) => {
-					if (event.key === "Escape" || event.keyCode === 27) {
-						div.style.display = "none";
-					}
-				};
-				window.addEventListener("keydown", closeByPushed);
 			});
+		};
+		zwButton.addEventListener(
+			"click",
+
+			openTrailer,
+		);
+		closeModBtn.addEventListener("click", (e) => {
+			e.preventDefault();
+			div.style.display = "none";
 		});
+
+		const closeByClicked = (event) => {
+			if (event.target === mod) {
+				div.style.display = "none";
+			}
+		};
+
+		mod.addEventListener("click", closeByClicked);
+
+		const closeByPushed = (event) => {
+			if (event.key === "Escape" || event.keyCode === 27) {
+				div.style.display = "none";
+			}
+		};
+		window.addEventListener("keydown", closeByPushed);
+
 		if (watched.find((obj) => obj.id === movie.id)) {
 			watchedButton.style.background = "green";
 			watchedButton.textContent = "DELETED FROM WATCHED";
