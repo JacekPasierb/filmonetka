@@ -196,8 +196,6 @@ watchedMovies.addEventListener("click", (e) => {
 	if (movieCard) {
 		const movieId = movieCard.dataset.movie;
 
-		
-
 		searchMovieById(movieId)
 			.then(() => toggleModal())
 			.catch((error) => console.error(error));
